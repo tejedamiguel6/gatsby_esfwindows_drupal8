@@ -59,6 +59,7 @@ const Blog = () => {
 
 
 `)
+
     return (
         <Layout>
             This is the blog page

@@ -1,7 +1,8 @@
 import React from 'react'
-import Header from '../components/Header'
 import Footer from '../components/Footer'
 import '../styles/index.scss'
+
+import Navbar from '../components/Navbar'
 
 import layoutStyles from './layout.module.scss'
 
@@ -35,7 +36,7 @@ const Layout = (props) => {
     return(
         <ThemeProvider theme={theme}>
             <StyledPage>
-            <Header />
+            <Navbar />
             <InnerPage>
                 {props.children}
             </InnerPage>
