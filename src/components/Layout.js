@@ -22,7 +22,7 @@ const StyledPage = styled.div`
 
 const InnerPage = styled.div`
     max-width: ${props => props.theme.maxWidth};
-    margin: 0 auto;
+    margin: 100px auto;
     padding: 2rem;
     display: flex;
     flex-direction: column;

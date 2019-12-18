@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import Logo from '../components/Logo'
+import CollapseMenu from '../components/CollapseMenu'
+import BurgerMenu from '../components/BurgerMenu'
 import { Link } from 'gatsby'
 import { useSpring, animated, config } from 'react-spring'
 
@@ -17,7 +19,8 @@ const NavBar = styled(animated.nav)`
         left: 0;
         background: #2c385b;
         z-index: 1;
-        font-size: 1.4rem;
+        font-size: 0.9rem;
+
         /* border: 1px solid red; */
     `
 
@@ -36,11 +39,12 @@ const NavLinks = styled(animated.ul)`
         list-style-type: none;
         margin: auto 0;
         
+        
         & a {
             color: #dfe6e9;
             text-transform: uppercase;
             font-weight: 500;
-            font-size: 19px;
+            /* font-size: 1.4rem; */
             border-bottom: 1px solid transparent;
             margin: 0 1.5rem;
             transition: all 300ms linear 0s;
@@ -52,11 +56,12 @@ const NavLinks = styled(animated.ul)`
             border-bottom: 1px solid #fdcb6e;
             }
 
-            @media (max-width: 768px) {
+            @media (max-width: 1164px) {
             display: none;
             }
         }
         `;
+
 
 
 const Navbar = (props) => {
@@ -77,6 +82,7 @@ const Navbar = (props) => {
 
     return (
         <NavBar style={barAnimation}>
+
             <FlexContainer>
                 <Logo />
                 <NavLinks style={linkAnimation}>
@@ -106,10 +112,17 @@ const Navbar = (props) => {
                         <Link to='/blog'>Blog</Link>
                         </li> */}
                 </NavLinks>
+                <BurgerMenu />
             </FlexContainer>
+            <CollapseMenu />
+
+
         </NavBar>
+        
     )
 }
+
+
 
 
 export default Navbar
