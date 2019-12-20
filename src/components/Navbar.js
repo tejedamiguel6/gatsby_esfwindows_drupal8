@@ -8,6 +8,115 @@ import { useSpring, animated, config } from 'react-spring'
 
 
 
+
+
+const Navbar = (props) => {
+
+    // using springs 
+    const barAnimation = useSpring({
+        from: { transform: 'translate3d(0, -10rem, 0)' },
+        transform: 'translate3d(0, 0, 0)',
+    });
+
+    const linkAnimation = useSpring({
+        from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
+        to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
+        delay: 800,
+        config: config.wobbly,
+    });
+
+
+
+    return (
+        <NavBar style={barAnimation}>
+
+            <FlexContainer>
+                <Logo />
+                <NavLinks style={linkAnimation}>
+                    <li>
+                        <Link to='/windows'>Windows</Link>
+                    </li>
+                    <li>
+                        <Link to='/doors'>Doors</Link>
+                    </li>
+                    <li>
+                        <Link to='/curtainwalls'>Curtain Walls</Link>
+                    </li>
+                    <li>
+                        <Link to='/hardware'>Hardware</Link>
+                    </li>
+                    <li>
+                        <Link to='/shadingproducts'>Shading Products</Link>
+                    </li>
+                    <li>
+                        <Link to='/about'>About</Link>
+                    </li>
+                    {/* <li>
+                        <Link to='/contact'>Contact</Link>
+
+                        </li> */}
+                    {/* <li>
+                        <Link to='/blog'>Blog</Link>
+                        </li> */}
+                </NavLinks>
+                <BurgerMenu 
+                    navbarState={props.navbarState, console.log('these are ', props.navbarState)} 
+                    handleNavbar={props.handleNavbar, console.log('i cant find these props ', props.handleNavbar)}
+                />
+            </FlexContainer>
+            <CollapseMenu 
+                navbarState={props.navbarState} 
+                handleNavbar={props.handleNavbar, console.log('i cant find props of', props)}
+
+                />
+
+
+        </NavBar>
+        
+    )
+}
+
+
+
+
+export default Navbar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // setting my styled-components here
 // if styling gets any bigger, maybe break it down
 // into it's on file.
@@ -61,72 +170,4 @@ const NavLinks = styled(animated.ul)`
             }
         }
         `;
-
-
-
-const Navbar = (props) => {
-
-    // using springs 
-    const barAnimation = useSpring({
-        from: { transform: 'translate3d(0, -10rem, 0)' },
-        transform: 'translate3d(0, 0, 0)',
-    });
-
-    const linkAnimation = useSpring({
-        from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
-        to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
-        delay: 800,
-        config: config.wobbly,
-    });
-
-
-    return (
-        <NavBar style={barAnimation}>
-
-            <FlexContainer>
-                <Logo />
-                <NavLinks style={linkAnimation}>
-                    <li>
-                        <Link to='/windows'>Windows</Link>
-                    </li>
-                    <li>
-                        <Link to='/doors'>Doors</Link>
-                    </li>
-                    <li>
-                        <Link to='/curtainwalls'>Curtain Walls</Link>
-                    </li>
-                    <li>
-                        <Link to='/hardware'>Hardware</Link>
-                    </li>
-                    <li>
-                        <Link to='/shadingproducts'>Shading Products</Link>
-                    </li>
-                    <li>
-                        <Link to='/about'>About</Link>
-                    </li>
-                    {/* <li>
-                        <Link to='/contact'>Contact</Link>
-
-                        </li> */}
-                    {/* <li>
-                        <Link to='/blog'>Blog</Link>
-                        </li> */}
-                </NavLinks>
-                <BurgerMenu />
-            </FlexContainer>
-            <CollapseMenu />
-
-
-        </NavBar>
-        
-    )
-}
-
-
-
-
-export default Navbar
-
-
-
 

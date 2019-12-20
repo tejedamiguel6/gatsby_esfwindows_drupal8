@@ -5,8 +5,53 @@ import { useSpring, animated } from 'react-spring'
 
 
 
-// adding styled components
 
+const CollapseMenu = (props) => {
+    const { open } = useSpring({
+        open: props.navbarState ? 0 : 1
+    })
+
+    if (props.navbarState === true) {
+        console.log('I am from CollapseMenu component ' , props)
+        return (
+            
+            <CollapseWrapper style={{
+                transform: open.interpolate({
+                    range: [0, 0.2, 0.3, 1],
+                    output: [0, -20, 0, -200],
+                }).interpolate(openValue => `translate3d(0, ${openValue}px, 0)`),
+            }}>
+                
+
+                
+                <NavLinks>
+                    <li><a href="/" onClick={props.handleNavbar}>Windows</a></li>
+                    <li><a href="/" onClick={props.handleNavbar}>Doors</a></li>
+                    <li><a href="/" onClick={props.handleNavbar}>Curtain Walls</a></li>
+                    <li><a href="/" onClick={props.handleNavbar}>Hardware</a></li>
+                    <li><a href="/" onClick={props.handleNavbar}>Shading Product</a></li>
+                    <li><a href="/" onClick={props.handleNavbar}>About</a></li>
+                    <li><a href="/" onClick={props.handleNavbar}>Contact</a></li>
+                </NavLinks>
+            </CollapseWrapper>
+
+        )
+
+    }
+
+
+    return null
+}
+
+export default CollapseMenu
+
+
+
+
+
+
+
+// adding styled components
 const CollapseWrapper = styled(animated.div)`
     background: #2d3436;
     position: fixed;
@@ -40,37 +85,3 @@ const NavLinks = styled.ul`
 
 
 `
-
-const CollapseMenu = (props) => {
-    const { open } = useSpring({
-        open: props.navbarState ? 0 : 1
-    })
-
-    if (props.navbarState === true) {
-        return (
-            <CollapseWrapper style={{
-                transform: open.interpolate({
-                    range: [0, 0.2, 0.3, 1],
-                    output: [0, -20, 0, -200],
-                }).interpolate(openValue => `translate3d(0, ${openValue}px, 0)`),
-            }}>
-                <NavLinks>
-                    <li><a href="/" onClick={props.handleNavbar}>Windows</a></li>
-                    <li><a href="/" onClick={props.handleNavbar}>Doors</a></li>
-                    <li><a href="/" onClick={props.handleNavbar}>Curtain Walls</a></li>
-                    <li><a href="/" onClick={props.handleNavbar}>Hardware</a></li>
-                    <li><a href="/" onClick={props.handleNavbar}>Shading Product</a></li>
-                    <li><a href="/" onClick={props.handleNavbar}>About</a></li>
-                    <li><a href="/" onClick={props.handleNavbar}>Contact</a></li>
-                </NavLinks>
-            </CollapseWrapper>
-
-        )
-
-    }
-
-
-    return null
-}
-
-export default CollapseMenu
