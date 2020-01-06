@@ -1,13 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
-
-
-
-const FooterParagraph = styled.p `
-    margin-top: 4rem;
-`
-
-
 
 
 const Footer = () => {
@@ -15,9 +6,7 @@ const Footer = () => {
         <footer >
 
 
-            <FooterParagraph>
-                Esfwindows. © 2019
-            </FooterParagraph>
+            <p>Esfwindows. © 2019</p>
         </footer>
     )
 }

@@ -6,6 +6,56 @@ import Layout from '../components/Layout'
 import styled from 'styled-components'
 
 
+
+
+const Blog = () => {
+
+
+const data = useStaticQuery(graphql`
+query {
+    allNodePage {
+        edges {
+            node {
+                title
+                id
+                
+            }
+        }
+    }
+}
+`)
+    
+
+    return (
+        <Layout>
+           
+            <BlogPost>
+                {data.allNodePage.edges.map((edge) => (
+                    <li>
+                        <Link to={`/blog/${edge.node.id}`}>
+                            <h2>{edge.node.title}</h2>
+                            <p>{edge.node.date}</p>
+
+                        </Link>
+
+
+                    </li>
+                ))}
+
+
+            </BlogPost>
+
+
+
+        </Layout>
+    )
+}
+
+
+
+
+
+
 const BlogPost = styled.ol`
     list-style-type: none;
     margin: 0;
@@ -39,50 +89,6 @@ const BlogPost = styled.ol`
 `;
 
 
-const Blog = () => {
-    const data = useStaticQuery(graphql`
-    query {
-  allMarkdownRemark {
-    edges {
-      node {
-        frontmatter {
-          title
-          date
-        }
-        fields {
-            slug
-        }
-      }
-    }
-  }
-}
 
-
-`)
-
-    return (
-        <Layout>
-            This is the blog page
-            <BlogPost>
-                {data.allMarkdownRemark.edges.map((edge) => (
-                    <li>
-                        <Link to={`/blog/${edge.node.fields.slug}`}>
-                            <h2>{edge.node.frontmatter.title}</h2>
-                            <p>{edge.node.frontmatter.date}</p>
-
-                        </Link>
-
-
-                    </li>
-                ))}
-
-
-            </BlogPost>
-
-
-
-        </Layout>
-    )
-}
 
 export default Blog
