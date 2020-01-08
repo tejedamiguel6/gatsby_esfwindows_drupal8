@@ -23,7 +23,6 @@ class Layout extends Component {
                     <InnerPage>
                         {this.props.children}
                     </InnerPage>
-
                 </StyledPage>
                 <Footer />
             </ThemeProvider>
@@ -31,56 +30,27 @@ class Layout extends Component {
     }
 }
 
-
 const theme = {
     maxWidth: 'auto'
 }
-
 
 const StyledPage = styled.div`
     background: white;
     color: black;
     
 `
-
 const InnerPage = styled.div`
+    /* border: 1px solid red; */
     max-width: ${props => props.theme.maxWidth};
     margin: 0 auto;
-    padding: 2rem;
+    padding: 160px 30px;
     display: flex;
     flex-direction: column;
     min-height: 100vh;;
-        flex-grow: 1;
-
-    /* background: red; */
-
+    flex-grow: 1;
 `
-
 
 export default Layout
 
 
 
-
-
-
-
-// const Layout = (props) => {
-//     return(
-//         <ThemeProvider theme={theme}>
-//             <StyledPage>
-//             <Navbar />
-//             <InnerPage>
-//                 {props.children}
-//             </InnerPage>
-           
-            
-//         </StyledPage>
-//         <Footer />
-//         </ThemeProvider>
-        
-        
-//     )
-// }
-
-// export default Layout

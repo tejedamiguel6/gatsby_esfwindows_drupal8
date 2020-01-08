@@ -1,23 +1,19 @@
 import React from 'react'
-
 import { Link, graphql, useStaticQuery } from 'gatsby'
-
 import Layout from '../components/Layout'
 import styled from 'styled-components'
 
 
 
-
 const Blog = () => {
-
 
 const data = useStaticQuery(graphql`
 query {
-    allNodePage {
+    allNodeBlog {
         edges {
             node {
-                title
                 id
+                title
                 
             }
         }
@@ -25,12 +21,11 @@ query {
 }
 `)
     
-
     return (
         <Layout>
            
             <BlogPost>
-                {data.allNodePage.edges.map((edge) => (
+                {data.allNodeBlog.edges.map((edge) => (
                     <li>
                         <Link to={`/blog/${edge.node.id}`}>
                             <h2>{edge.node.title}</h2>
@@ -38,21 +33,12 @@ query {
 
                         </Link>
 
-
                     </li>
                 ))}
-
-
             </BlogPost>
-
-
-
         </Layout>
     )
 }
-
-
-
 
 
 

@@ -25,7 +25,9 @@ module.exports = {
         path: `${__dirname}/src/`
       }
     },
+    'gatsby-image',
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {

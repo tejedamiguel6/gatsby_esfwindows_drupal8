@@ -1,8 +1,7 @@
 import React from 'react'
 
-import { Link } from 'gatsby'
+import { Link, graphql, useStaticQuery } from 'gatsby'
 import Layout from '../components/Layout'
-
 import styled from 'styled-components'
 
 
@@ -13,15 +12,17 @@ const Hero = styled.div`
 `
 
 
+
 const Home = () => {
+
+
     return (
         <Layout>
             <Hero>
+                <h1>Home page</h1>
                
 
-                <button>
-                    Submit
-                </button>
+               
 
             </Hero>
             

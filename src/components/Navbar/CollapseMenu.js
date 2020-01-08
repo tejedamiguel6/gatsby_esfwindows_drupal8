@@ -40,6 +40,12 @@ const CollapseWrapper = styled(animated.div)`
   top: 4.5rem;
   left: 0;
   right: 0;
+  z-index: 1;
+
+  @media(min-width: 1121px) {
+            display: none;
+            
+        }
 `;
 
 
@@ -64,6 +70,7 @@ const NavLinks = styled.ul`
             color: #fdcb6e;
             border-bottom: 1px solid #fdcb6e;
         } 
+        
        
     }
 `;

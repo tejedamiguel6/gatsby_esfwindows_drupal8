@@ -19,7 +19,18 @@ const path = require('path')
 
 // }
 
+
+
+
+
+
+
+
+
+
+
 // creating pages
+
 
 module.exports.createPages = async ({ graphql, actions}) => {
     const { createPage } = actions
@@ -27,18 +38,20 @@ module.exports.createPages = async ({ graphql, actions}) => {
     const blogTemplate = path.resolve('./src/templates/blog.js')
     const res = await graphql(`
     query {
-      allNodePage {
+      allNodeBlog {
         edges {
           node {
             id
             title
+            created(formatString: "MMMM D0, YYYY")
           }
         }
       }
     }
     
+    
     `)
-    res.data.allNodePage.edges.forEach((edge) => {
+    res.data.allNodeBlog.edges.forEach((edge) => {
         createPage({
             component: blogTemplate,
             path: `/blog/${edge.node.id}`,

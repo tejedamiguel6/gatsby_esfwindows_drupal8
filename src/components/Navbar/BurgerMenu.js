@@ -45,6 +45,8 @@ const Wrapper = styled.div`
         transform: rotate(-55deg);
         top: 11px;
     }
+
+   
 `;
 
 export default BurgerMenu
