@@ -2,6 +2,8 @@ import React from 'react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
 import Layout from '../components/Layout'
 import styled from 'styled-components'
+import Head from '../components/Head'
+
 
 
 
@@ -23,7 +25,7 @@ query {
     
     return (
         <Layout>
-           
+            <Head title='Blog' />
             <BlogPost>
                 {data.allNodeBlog.edges.map((edge) => (
                     <li>

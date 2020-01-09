@@ -2,6 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Img from 'gatsby-image'
+import Head from '../components/Head'
+
 
 
 
@@ -43,6 +45,7 @@ const Blog = ({data}) => {
   console.log(image)
     return (
         <Layout>
+          <Head title={data.nodeBlog.title} />
           <h1>{data.nodeBlog.title}</h1>
 
           {image ? (

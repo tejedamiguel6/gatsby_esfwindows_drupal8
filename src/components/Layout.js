@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Navbar from '../components/Navbar/Navbar'
 import Footer from '../components/Footer'
 import '../styles/index.scss'
-import styled, { ThemeProvider, injectGlobal} from 'styled-components'
+import styled, { ThemeProvider, injectGlobal } from 'styled-components'
 
 
 class Layout extends Component {

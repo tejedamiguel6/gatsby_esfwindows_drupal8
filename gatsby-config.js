@@ -10,6 +10,7 @@ module.exports = {
     author: 'Miguel',
   },
   plugins: [
+    `gatsby-plugin-react-helmet`,
     {
       resolve: 'gatsby-source-drupal',
       options: {
