@@ -1,4 +1,12 @@
 import React from 'react'
+import styled from 'styled-components'
+
+
+const FooterStyled = styled.p`
+    text-align: center;
+
+
+`
 
 
 const Footer = () => {
@@ -6,7 +14,7 @@ const Footer = () => {
         <footer >
 
 
-            <p>Esfwindows. © 2019</p>
+            <FooterStyled>Esfwindows. © 2020</FooterStyled>
         </footer>
     )
 }

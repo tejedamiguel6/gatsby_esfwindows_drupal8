@@ -21,8 +21,23 @@ const path = require('path')
 
 
 
+// might need to delte this 
+module.exports.createResolvers = ({ createResolvers }) => {
+  createResolvers({
+    TypeNameinGraphql: {
+      slug: {
+        type: `string`,
+        resolve: object => {
+          const title = changeCase.paramCase(object.title)
+          console.log('here is s@@@@@@@@ome @@@@@', title)
 
+          return `/${title}`
+        }
+      }
+    }
+  }) 
 
+}
 
 
 
@@ -47,19 +62,45 @@ module.exports.createPages = async ({ graphql, actions}) => {
           }
         }
       }
+      allNodeCompany {
+        edges {
+          node {
+            id
+            title
+            created
+          }
+        }
+      }
     }
-    
-    
     `)
-    res.data.allNodeBlog.edges.forEach((edge) => {
+    if(res.errors) {
+      console.log(res.errors)
+    }
+    console.log(JSON.stringify(res, undefined, 3))
+    const { allNodeBlog, allNodeCompany } = res.data
+    allNodeBlog.edges.forEach(({ node }) => {
         createPage({
             component: blogTemplate,
-            path: `/blog/${edge.node.id}`,
+            path: `/blog/${node.id}`,
             context: {
-                id: edge.node.id
+                id: node.id
             }
         })
     })
+
+
+    // const homeTemplate = path.resolve.apply('./src/templates/home.js')
+    // allNodeCompany.edges.forEach(({ node }) => {
+    //   createPage({
+    //     component: homeTemplate,
+    //     path: `/home/${node.id}`,
+    //     context: {
+    //       id: node.id
+    //     }
+    //   })
+
+    // })
+
 }
 
 

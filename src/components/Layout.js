@@ -31,19 +31,21 @@ class Layout extends Component {
 }
 
 const theme = {
-    maxWidth: 'auto'
+    maxWidth: 'auto',
+    
 }
 
 const StyledPage = styled.div`
     background: white;
     color: black;
+    /* border: 1px solid red; */
     
 `
 const InnerPage = styled.div`
     /* border: 1px solid red; */
     max-width: ${props => props.theme.maxWidth};
     margin: 0 auto;
-    padding: 160px 30px;
+    /* padding: 160px 30px; */
     display: flex;
     flex-direction: column;
     min-height: 100vh;;

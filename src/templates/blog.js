@@ -34,7 +34,6 @@ export const query = graphql`
 
 
 const Blog = ({data}) => {
-  
 
   const post = data.nodeBlog
   const image = data.nodeBlog.relationships.field_blog_image
@@ -51,7 +50,7 @@ const Blog = ({data}) => {
           {image ? (
             <div>
               <Img fluid={ post.relationships.field_blog_image[0].localFile.childImageSharp.fluid} />
-              <div dangerouslySetInnerHTML={{ __html: post.body[0].value }}></div>
+              <div dangerouslySetInnerHTML={{ __html: post.body.value }}></div>
 
             </div>
           ) :
