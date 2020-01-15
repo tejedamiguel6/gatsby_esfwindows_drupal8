@@ -1,7 +1,5 @@
 const path = require('path') 
 
-
-
 // module.exports.onCreateNode = ({node, actions }) => {
 //     const { createNodeField } = actions  
 
@@ -40,13 +38,7 @@ module.exports.createResolvers = ({ createResolvers }) => {
 }
 
 
-
-
-
-
 // creating pages
-
-
 module.exports.createPages = async ({ graphql, actions}) => {
     const { createPage } = actions
 

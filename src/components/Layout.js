@@ -36,6 +36,7 @@ const theme = {
 }
 
 const StyledPage = styled.div`
+    margin: 0 auto;
     background: white;
     color: black;
     /* border: 1px solid red; */

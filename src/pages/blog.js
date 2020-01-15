@@ -32,15 +32,14 @@ query {
                         <Link to={`/blog/${edge.node.id}`}>
                             <h2>{edge.node.title}</h2>
                             <p>{edge.node.date}</p>
-
                         </Link>
-
                     </li>
                 ))}
             </BlogPost>
         </Layout>
     )
 }
+
 
 
 

@@ -16,6 +16,7 @@ const BurgerMenu = (props) => {
     )
 }
 
+
 const Wrapper = styled.div`
     position: relative; 
     padding-top: .7rem;

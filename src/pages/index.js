@@ -3,11 +3,10 @@ import React from 'react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
 import Layout from '../components/Layout'
 import Company from '../components/Company'
+import WindowContent from '../components/WindowContent'
 import styled from 'styled-components'
 import Head from '../components/Head'
 import Img from 'gatsby-image'
-
-
 
 
 
@@ -46,39 +45,24 @@ export const query = graphql`
 
 const Home = ({ data }) => {
     const post = data.nodePage
-    console.log(data)
-    console.log('this is the first page ', post)
+    // console.log('this is the first page ', post)
 
     return (
         <Layout>
             <Head title='Home' />
             <Hero>
-        
-                    <Img style={{
-                        backgroundSize: 'cover',
-                        marginTop: '-30px',
-                        backgroundSize: 'cover',
-                        left: 0,
-                        top: 0,
-                        width: '100%',
-                    }}
-                    fluid={post.relationships.field_basic_page_image[0].relationships.node__page[0].relationships.field_basic_page_image[0].localFile.childImageSharp.fluid} />
-
+              <Img style={{
+                  marginTop: '-30px',
+              }}
+              fluid={post.relationships.field_basic_page_image[0].relationships.node__page[0].relationships.field_basic_page_image[0].localFile.childImageSharp.fluid} />
               <Title>{post.title}</Title>
-            
                 <Quote dangerouslySetInnerHTML={{__html: post.body.value}}></Quote>
-              
-              </Hero>
-
+            </Hero>
               <Company />
-                
-             
-            
+              <WindowContent />  
         </Layout>
     )  
 }
-
-
 
 
 // style components

@@ -34,12 +34,9 @@ export const query = graphql`
 
 
 const Blog = ({data}) => {
-
   const post = data.nodeBlog
   const image = data.nodeBlog.relationships.field_blog_image
   console.log('Here is the body of the post', post )
-
-  
 
   console.log(image)
     return (
