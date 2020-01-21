@@ -5,7 +5,11 @@ import BurgerMenu from './BurgerMenu'
 import CollapseMenu from './CollapseMenu'
 import { useSpring, animated, config } from 'react-spring'
 
+<<<<<<< HEAD
 import { Link } from 'gatsby'
+=======
+import { Link, graphql, useStaticQuery } from 'gatsby'
+>>>>>>> 1681128df6f74cc3b42a3b2c5c14d1ae7172c199
 
 
 
@@ -64,6 +68,10 @@ const Navbar = (props) => {
 
 
 // Styled components here
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1681128df6f74cc3b42a3b2c5c14d1ae7172c199
 const NavBar = styled(animated.nav) `
     position: fixed;
     width: 100%;

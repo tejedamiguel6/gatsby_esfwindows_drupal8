@@ -16,9 +16,12 @@ query {
             node {
                 id
                 title
+<<<<<<< HEAD
                 fields {
                     slug
                 }
+=======
+>>>>>>> 1681128df6f74cc3b42a3b2c5c14d1ae7172c199
                 
             }
         }
@@ -32,12 +35,19 @@ query {
             <BlogPost>
                 {data.allNodeBlog.edges.map((edge) => (
                     <li>
+<<<<<<< HEAD
                         <Link to={`/blog/${edge.node.fields.slug}`}>
                             <h2>{edge.node.title}</h2>
                             <p>{edge.node.date}</p>
 
                         </Link>
 
+=======
+                        <Link to={`/blog/${edge.node.id}`}>
+                            <h2>{edge.node.title}</h2>
+                            <p>{edge.node.date}</p>
+                        </Link>
+>>>>>>> 1681128df6f74cc3b42a3b2c5c14d1ae7172c199
                     </li>
                 ))}
             </BlogPost>
@@ -47,15 +57,24 @@ query {
 
 
 
+<<<<<<< HEAD
 const BlogPost = styled.ol`
     list-style-type: none;
     padding-top: 130px;
+=======
+
+const BlogPost = styled.ol`
+    list-style-type: none;
+>>>>>>> 1681128df6f74cc3b42a3b2c5c14d1ae7172c199
     margin: 0;
     li {
         
         margin: 1rem 0;
+<<<<<<< HEAD
         border: 1px solid red;
         
+=======
+>>>>>>> 1681128df6f74cc3b42a3b2c5c14d1ae7172c199
     
     }
     a {

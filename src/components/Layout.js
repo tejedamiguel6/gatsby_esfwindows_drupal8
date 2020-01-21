@@ -32,6 +32,7 @@ class Layout extends Component {
 
 const theme = {
     maxWidth: 'auto',
+<<<<<<< HEAD
 }
 
 const StyledPage = styled.div`
@@ -43,6 +44,23 @@ const InnerPage = styled.div`
     border: 1px solid red;
     max-width: ${props => props.theme.maxWidth};
     margin: 0 auto;
+=======
+    
+}
+
+const StyledPage = styled.div`
+    margin: 0 auto;
+    background: white;
+    color: black;
+    /* border: 1px solid red; */
+    
+`
+const InnerPage = styled.div`
+    /* border: 1px solid red; */
+    max-width: ${props => props.theme.maxWidth};
+    margin: 0 auto;
+    /* padding: 160px 30px; */
+>>>>>>> 1681128df6f74cc3b42a3b2c5c14d1ae7172c199
     display: flex;
     flex-direction: column;
     min-height: 100vh;;
