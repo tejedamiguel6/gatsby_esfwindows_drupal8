@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react"
 import styled from "styled-components"
 import Logo from "../Navbar/Logo"
@@ -147,6 +148,62 @@ const Navbar = props => {
             />
           </BurgerWrapper>
         </FlexContainer>
+=======
+import React from 'react'
+import styled from 'styled-components'
+import Logo from '../Navbar/Logo'
+import BurgerMenu from './BurgerMenu'
+import CollapseMenu from './CollapseMenu'
+import { useSpring, animated, config } from 'react-spring'
+
+<<<<<<< HEAD
+import { Link } from 'gatsby'
+=======
+import { Link, graphql, useStaticQuery } from 'gatsby'
+>>>>>>> 1681128df6f74cc3b42a3b2c5c14d1ae7172c199
+
+
+
+
+const Navbar = (props) => {
+    const barAnimation = useSpring({
+        from: { transform: 'translate3d(0, -10rem, 0'},
+        to: { transform: 'translate3d(0, 0, 0)', opacity: 1},
+        delay: 20,
+        config: config.wobbly
+    })
+
+    const linkAnimation = useSpring({
+        from: { transform: 'translate3d(0, 30px, 0)', opcaity: 0 },
+        to: { transform: 'translate3d(0, 0, 0)', opcaity: 1},
+        delay: 20,
+        config: config.wobbly
+    })
+
+
+
+    return (
+        <>
+        <NavBar style ={barAnimation}>
+            <FlexContainer>
+                <Logo />
+                <NavLinks style={linkAnimation}>
+                    <Link to="/shadingproducts">Shading Products</Link>
+                    <Link to="/windows">Windows</Link>
+                    <Link to="/curtainwalls">Curtain Walls</Link>
+                    <Link to="/hardware">Hardware</Link>
+                    <Link to="/about">About</Link>
+                    <Link to="/contact">Contact</Link>
+                </NavLinks>
+
+            <BurgerWrapper>
+                <BurgerMenu 
+                navbarState={props.navbarState} 
+                handleNavbar={props.handleNavbar}
+                />
+            </BurgerWrapper>
+            </FlexContainer>
+>>>>>>> 99686ba17ec836a534757918cd0ed2c2a126fa56
         <CollapseMenu />
       </NavBar>
       <CollapseMenu
@@ -162,6 +219,7 @@ const NavItem = styled.li`
 `
 
 // Styled components here
+<<<<<<< HEAD
 const NavBar = styled(animated.nav)`
   position: fixed;
   width: 100%;
@@ -171,6 +229,21 @@ const NavBar = styled(animated.nav)`
   z-index: 1;
   font-size: 1.4rem;
 `
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1681128df6f74cc3b42a3b2c5c14d1ae7172c199
+const NavBar = styled(animated.nav) `
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #2d385b;
+    z-index: 1;
+    font-size: 1.4rem;
+`;
+>>>>>>> 99686ba17ec836a534757918cd0ed2c2a126fa56
 
 const FlexContainer = styled.div`
   max-width: 120rem;
