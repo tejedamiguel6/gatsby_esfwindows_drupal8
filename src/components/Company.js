@@ -26,10 +26,11 @@ const Company = () => {
                 </h1>
                 <p dangerouslySetInnerHTML ={{ __html: data.nodePage.body.value}} ></p>
                 
-                <Link to={`/${data.nodePage.id}`}> 
+                <Btn>
+                    <Link to={`/${data.nodePage.id}`}>LEARN MORE</Link>
+                </Btn>
                 
-                    <Btn>Learn More</Btn> 
-                </Link>
+                
          </CompanyInfo>
     )
 }

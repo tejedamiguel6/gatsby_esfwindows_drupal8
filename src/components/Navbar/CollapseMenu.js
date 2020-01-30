@@ -1,11 +1,41 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useSpring, animated } from 'react-spring'
-import { Link } from 'gatsby'
+import { Link, graphql, useStaticQuery } from 'gatsby'
 
 
 
 const CollapseMenu = (props) => {
+
+
+    const data = useStaticQuery(graphql`
+       query {
+        allMenuLinkContentMenuLinkContent(
+        sort: { fields: [weight], order: ASC }
+        filter: {
+        description: {
+        eq: "MainMenu"
+      }
+    }
+  ) {
+    edges {
+      node {
+        expanded
+        title
+        drupal_id
+        drupal_parent_menu_item
+        fields {
+          lowerCaseMenuTitle
+        }
+      }
+    }
+  }
+}
+
+`)
+
+
+
     const { open } = useSpring({ open: props.navbarState ? 0 : 1})
 
     if (props.navbarState === true ) {
@@ -18,13 +48,9 @@ const CollapseMenu = (props) => {
             }} 
             >
                 <NavLinks>
-                    <li><Link to="/shadingproducts" onClick={props.handleNavbar}>Shading Product</Link></li>
-                    <li><Link to="/windows" onClick={props.handleNavbar}>Windows</Link></li>
-                    <li><Link to="/curtainwalls" onClick={props.handleNavbar}>Curtain Walls</Link></li>
-                    <li><Link to="/hardware" onClick={props.handleNavbar}>Hardware</Link></li>
-                    <li><Link to="/doors" onClick={props.handleNavbar}>Doors</Link></li>
-                    <li><Link to="/about" onClick={props.handleNavbar}>About</Link></li>
-                    <li><Link to="/contact" onClick={props.handleNavbar}>Contact</Link></li>
+                {data.allMenuLinkContentMenuLinkContent.edges.map((edge) => (
+                <li><Link to={edge.node.fields.lowerCaseMenuTitle}>{edge.node.title}</Link></li>
+                ))}         
                 </NavLinks>
             </CollapseWrapper>
         )

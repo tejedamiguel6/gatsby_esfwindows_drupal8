@@ -16,7 +16,9 @@ query {
             node {
                 id
                 title
-                
+                fields {
+                    slug
+                }
             }
         }
     }
@@ -29,10 +31,12 @@ query {
             <BlogPost>
                 {data.allNodeBlog.edges.map((edge) => (
                     <li>
-                        <Link to={`/blog/${edge.node.id}`}>
+                        <Link to={`/blog/${edge.node.fields.slug}`}>
                             <h2>{edge.node.title}</h2>
                             <p>{edge.node.date}</p>
+
                         </Link>
+
                     </li>
                 ))}
             </BlogPost>

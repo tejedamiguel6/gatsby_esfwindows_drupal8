@@ -8,6 +8,8 @@ import styled from 'styled-components'
 import Head from '../components/Head'
 import Img from 'gatsby-image'
 
+import NavIndex from '../components/Navbar/NavIndex'
+
 
 
 export const query = graphql`
@@ -25,7 +27,7 @@ export const query = graphql`
               field_basic_page_image {
                 localFile {
                   childImageSharp {
-                    fluid(maxWidth: 1080, maxHeight: 900) {
+                    fluid(maxWidth: 1070, maxHeight: 550) {
                       ...GatsbyImageSharpFluid
                     }
                   }
@@ -39,8 +41,6 @@ export const query = graphql`
   }
 }
 `;
-
-
 
 
 const Home = ({ data }) => {
@@ -60,6 +60,8 @@ const Home = ({ data }) => {
             </Hero>
               <Company />
               <WindowContent />  
+
+              <NavIndex />
         </Layout>
     )  
 }
