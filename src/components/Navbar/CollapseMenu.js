@@ -7,34 +7,24 @@ import { Link, graphql, useStaticQuery } from 'gatsby'
 
 const CollapseMenu = (props) => {
 
-
     const data = useStaticQuery(graphql`
-       query {
+        query {
         allMenuLinkContentMenuLinkContent(
         sort: { fields: [weight], order: ASC }
-        filter: {
-        description: {
-        eq: "MainMenu"
-      }
-    }
-  ) {
-    edges {
-      node {
-        expanded
-        title
-        drupal_id
-        drupal_parent_menu_item
-        fields {
-          lowerCaseMenuTitle
+        filter: { description: { eq: "MainMenu" } }
+        
+    ){
+        edges {
+        node {
+            title
+            fields {
+            lowerCaseMenuTitle
+                }
+            }
         }
-      }
     }
-  }
 }
-
 `)
-
-
 
     const { open } = useSpring({ open: props.navbarState ? 0 : 1})
 
@@ -49,9 +39,11 @@ const CollapseMenu = (props) => {
             >
                 <NavLinks>
                 {data.allMenuLinkContentMenuLinkContent.edges.map((edge) => (
-                <li><Link to={edge.node.fields.lowerCaseMenuTitle}>{edge.node.title}</Link></li>
-                ))}         
+                   <li><Link to={edge.node.fields.lowerCaseMenuTitle} onClick={props.handleNavbar}>{edge.node.title}</Link></li> 
+        
+                  ))}
                 </NavLinks>
+                
             </CollapseWrapper>
         )
     }
@@ -73,7 +65,6 @@ const CollapseWrapper = styled(animated.div)`
             
         }
 `;
-
 
 const NavLinks = styled.ul`
     list-style-type: none;

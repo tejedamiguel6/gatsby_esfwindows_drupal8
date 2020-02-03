@@ -1,6 +1,6 @@
-<<<<<<< HEAD
 const path = require("path")
 
+// blog template slug
 module.exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === "node__blog") {
@@ -13,130 +13,74 @@ module.exports.onCreateNode = ({ node, actions }) => {
       value: slug,
     })
   } else if (node.internal.type === "menu_link_content__menu_link_content") {
+    console.log(
+      "@@@@@@MIGUEL TEJEDA@@@@@@@@@@@@@@@@@@@@@@@",
+      JSON.stringify(node, undefined, 3)
+    )
+
+    // // creating a submenu
+    const drupalParentID = node.drupal_id
+
+    const child = node.drupal_parent_menu_item
+
+    console.log(child, "children submenu")
+    const title = node.title
+    console.log("PARENT PARENT PARENT", drupalParentID)
+    if (drupalParentID === "4b7750d8-0c73-47e5-897c-126cf1f33aa1")
+      console.log("this is ", title, "!!!!&&******#########parent link")
+
+    // const childMenuID = node.drupal_parent_menu_item
+    // console.log('CHILD CHILD CHILD', childMenuID)
+
+    // let result
+
+    // if(drupalParentID === childMenuID){
+    //   console.log(result, 'these two are the same!!!!!')
+
+    // }
+
+    // console.log('parentmenu', drupalParentID)
+    // console.log('CHLD MENU ID IS HERE!!!', childMenuID)
+
     const navTitle = node.title
     const lowerCaseNav = navTitle
       .toLowerCase(navTitle)
       .split(" ")
       .join("-")
-    // console.log("@@@@####", lowerCaseNav)
     createNodeField({
       node,
       name: "lowerCaseMenuTitle",
       value: lowerCaseNav,
     })
   }
-=======
-const path = require('path') 
-
-<<<<<<< HEAD
-
-// generate slug without spaces
-module.exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions 
-  if(node.internal.type === 'node__company'){
-    console.log(JSON.stringify(node, undefined, 3))
-    // grabbing info in that array of objects and
-    // storing it into a variable named slug
-    const oldSlug = `/${node.field_company[0].alt}/`
-    // replacing the space with a dash in the slug. will help with SEO
-    const slug = oldSlug.replace( " ", '-' )
-    console.log('@@@@@&&&&&&&&&&', slug)
-    createNodeField({
-      node,
-      name: `slug`,
-      value: slug,
-      
-    })
-  }
 }
 
+// drupal_parent_menu_item": "menu_link_content:4b7750d8-0c73-47e5-897c-126cf1f33aa1
 
-// blog template slug
-module.exports.onCreateNode = ({ node, actions }) => {
-  const { createNodeField } = actions 
-  if(node.internal.type === 'node__blog'){
-    const oldSlug = node.title
-    const slug = oldSlug.replace(' ', '-')
-    createNodeField({
-      node,
-      name: 'slug',
-      value: slug
-    })
-  }
-=======
-// module.exports.onCreateNode = ({node, actions }) => {
-//     const { createNodeField } = actions  
-
-//     if(node.internal.type === 'MarkdownRemark'){
-//         const slug = path.basename(node.fileAbsolutePath, '.md')
-
-//         createNodeField({ 
-//             node,
-//             name: 'slug',
-//             value: slug
-//         })
-
-
-//     }
-
-// }
-
-
-
-// might need to delte this 
-module.exports.createResolvers = ({ createResolvers }) => {
-  createResolvers({
-    TypeNameinGraphql: {
-      slug: {
-        type: `string`,
-        resolve: object => {
-          const title = changeCase.paramCase(object.title)
-          console.log('here is s@@@@@@@@ome @@@@@', title)
-
-          return `/${title}`
-        }
-      }
-    }
-  }) 
-
->>>>>>> 1681128df6f74cc3b42a3b2c5c14d1ae7172c199
->>>>>>> 99686ba17ec836a534757918cd0ed2c2a126fa56
-}
+// drupal_parent_menu_item": "menu_link_content:4b7750d8-0c73-47e5-897c-126cf1f33aa1
 
 // creating pages
-<<<<<<< HEAD
 module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const blogTemplate = path.resolve("./src/templates/blog.js")
   const res = await graphql(`
-=======
-module.exports.createPages = async ({ graphql, actions}) => {
-    const { createPage } = actions
-<<<<<<< HEAD
-=======
-
->>>>>>> 1681128df6f74cc3b42a3b2c5c14d1ae7172c199
-    const blogTemplate = path.resolve('./src/templates/blog.js')
-    const res = await graphql(`
->>>>>>> 99686ba17ec836a534757918cd0ed2c2a126fa56
     query {
+      allNodeCompany {
+        edges {
+          node {
+            id
+            title
+          }
+        }
+      }
       allNodeBlog {
         edges {
           node {
             id
             title
-<<<<<<< HEAD
             fields {
               slug
             }
-=======
-            created(formatString: "MMMM D0, YYYY")
-<<<<<<< HEAD
-            fields {
-              slug
-            }
-=======
->>>>>>> 99686ba17ec836a534757918cd0ed2c2a126fa56
           }
         }
       }
@@ -145,22 +89,25 @@ module.exports.createPages = async ({ graphql, actions}) => {
           node {
             id
             title
-<<<<<<< HEAD
-=======
-            created
->>>>>>> 1681128df6f74cc3b42a3b2c5c14d1ae7172c199
->>>>>>> 99686ba17ec836a534757918cd0ed2c2a126fa56
           }
         }
       }
     }
-<<<<<<< HEAD
   `)
   if (res.errors) {
     console.log(res.errors)
   }
   console.log(JSON.stringify(res, null, 3))
-  const { allNodeBlog, allNodeWindows } = res.data
+  const {
+    allNodeWoodWoodClad,
+    allNodeUpvc,
+    allNodeSteelCustom,
+    allNodeShadingProducts,
+    allNodeAccessories,
+    allNodeCompany,
+    allNodeBlog,
+    allNodeWindows,
+  } = res.data
   allNodeBlog.edges.forEach(({ node }) => {
     createPage({
       component: blogTemplate,
@@ -170,47 +117,4 @@ module.exports.createPages = async ({ graphql, actions}) => {
       },
     })
   })
-=======
-    `)
-<<<<<<< HEAD
-    res.data.allNodeBlog.edges.forEach((edge) => {
-        createPage({
-            component: blogTemplate,
-            path: `/blog/${edge.node.fields.slug}`,
-            context: {
-                slug: edge.node.fields.slug
-            }
-        })
-    })
-=======
-    if(res.errors) {
-      console.log(res.errors)
-    }
-    console.log(JSON.stringify(res, undefined, 3))
-    const { allNodeBlog, allNodeCompany } = res.data
-    allNodeBlog.edges.forEach(({ node }) => {
-        createPage({
-            component: blogTemplate,
-            path: `/blog/${node.id}`,
-            context: {
-                id: node.id
-            }
-        })
-    })
-
-
-    // const homeTemplate = path.resolve.apply('./src/templates/home.js')
-    // allNodeCompany.edges.forEach(({ node }) => {
-    //   createPage({
-    //     component: homeTemplate,
-    //     path: `/home/${node.id}`,
-    //     context: {
-    //       id: node.id
-    //     }
-    //   })
-
-    // })
-
->>>>>>> 1681128df6f74cc3b42a3b2c5c14d1ae7172c199
->>>>>>> 99686ba17ec836a534757918cd0ed2c2a126fa56
 }

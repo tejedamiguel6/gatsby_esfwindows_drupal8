@@ -1,154 +1,3 @@
-<<<<<<< HEAD
-import React from "react"
-import styled from "styled-components"
-import Logo from "../Navbar/Logo"
-import BurgerMenu from "./BurgerMenu"
-import CollapseMenu from "./CollapseMenu"
-import { useSpring, animated, config } from "react-spring"
-import { Link, graphql, useStaticQuery } from "gatsby"
-
-import styles from "../../styles/index.scss"
-
-const Navbar = props => {
-  const barAnimation = useSpring({
-    from: { transform: "translate3d(0, -10rem, 0" },
-    to: { transform: "translate3d(0, 0, 0)", opacity: 1 },
-    delay: 20,
-    config: config.wobbly,
-  })
-
-  const linkAnimation = useSpring({
-    from: { transform: "translate3d(0, 30px, 0)", opcaity: 0 },
-    to: { transform: "translate3d(0, 0, 0)", opcaity: 1 },
-    delay: 20,
-    config: config.wobbly,
-  })
-
-  const data = useStaticQuery(graphql`
-    query {
-      parentMainMenu: allMenuLinkContentMenuLinkContent(
-        sort: { fields: [weight], order: ASC }
-        filter: { description: { eq: "MainMenu" } }
-      ) {
-        edges {
-          node {
-            expanded
-            title
-            drupal_id
-            drupal_parent_menu_item
-            fields {
-              lowerCaseMenuTitle
-            }
-          }
-        }
-      }
-
-      aluminumChildren: allMenuLinkContentMenuLinkContent(
-        filter: {
-          drupal_parent_menu_item: {
-            eq: "menu_link_content:be7894ec-d78d-488c-82a2-379c3db8ed6c"
-          }
-        }
-      ) {
-        edges {
-          node {
-            id
-            title
-            fields {
-              lowerCaseMenuTitle
-            }
-            link {
-              uri
-            }
-            drupal_parent_menu_item
-          }
-        }
-      }
-    }
-  `)
-
-  console.log("HERE IS SOMETHING", data)
-  console.log(data.parentMainMenu)
-  // creating individual menus becuase they are going to have seperate
-  // child menus and drupal makes it complicated...
-  const woodWoodClad = data.parentMainMenu.edges[0].node.title
-  const woodWoodCladLink =
-    data.parentMainMenu.edges[0].node.fields.lowerCaseMenuTitle
-
-  const aluminum = data.parentMainMenu.edges[1].node.title
-  const aluminumLink =
-    data.parentMainMenu.edges[1].node.fields.lowerCaseMenuTitle
-
-  const shadingProduct = data.parentMainMenu.edges[2].node.title
-  const shadingProductLink =
-    data.parentMainMenu.edges[2].node.fields.lowerCaseMenuTitle
-
-  const upvc = data.parentMainMenu.edges[3].node.title
-  const upvcLink = data.parentMainMenu.edges[3].node.fields.lowerCaseMenuTitle
-
-  const steelAndCustom = data.parentMainMenu.edges[4].node.title
-  const steelAndCustomLink =
-    data.parentMainMenu.edges[4].node.fields.lowerCaseMenuTitle
-
-  return (
-    <>
-      <NavBar style={barAnimation}>
-        <FlexContainer>
-          <Logo />
-          <NavLinks style={linkAnimation}>
-            <li>
-              <Link to={woodWoodCladLink}>{woodWoodClad}</Link>
-            </li>
-
-            <li className="nav__menu_item">
-              <Link to={aluminumLink}>{aluminum}</Link>
-              <ul className="nav__submenu">
-                {data.aluminumChildren.edges.map(edge => (
-                  <li className="nav__submenu-item">
-                    <Link to={edge.node.fields.lowerCaseMenuTitle}>
-                      {edge.node.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </li>
-
-            <li>
-              <Link to={shadingProductLink}>{shadingProduct}</Link>
-            </li>
-
-            <li>
-              <Link to={upvcLink}>{upvc}</Link>
-            </li>
-
-            <li>
-              <Link to={woodWoodCladLink}>{woodWoodClad}</Link>
-            </li>
-
-            <li>
-              <Link to={steelAndCustomLink}>{steelAndCustom}</Link>
-            </li>
-
-            {/* <li>
-              <Link to={woodWoodClad}> </Link>
-            </li> */}
-
-            {/* {data.parentMainMenu.edges.map(edge => (
-              <li>
-                <Link to={edge.node.fields.lowerCaseMenuTitle}>
-                  {edge.node.title}
-                </Link>
-              </li>
-            ))} */}
-          </NavLinks>
-          <BurgerWrapper>
-            <BurgerMenu
-              navbarState={props.navbarState}
-              handleNavbar={props.handleNavbar}
-            />
-          </BurgerWrapper>
-        </FlexContainer>
-=======
 import React from 'react'
 import styled from 'styled-components'
 import Logo from '../Navbar/Logo'
@@ -156,16 +5,14 @@ import BurgerMenu from './BurgerMenu'
 import CollapseMenu from './CollapseMenu'
 import { useSpring, animated, config } from 'react-spring'
 
-<<<<<<< HEAD
-import { Link } from 'gatsby'
-=======
-import { Link, graphql, useStaticQuery } from 'gatsby'
->>>>>>> 1681128df6f74cc3b42a3b2c5c14d1ae7172c199
+import { Link, useStaticQuery, graphql} from 'gatsby'
 
-
+import styles from '../../styles/index.scss'
 
 
 const Navbar = (props) => {
+
+
     const barAnimation = useSpring({
         from: { transform: 'translate3d(0, -10rem, 0'},
         to: { transform: 'translate3d(0, 0, 0)', opacity: 1},
@@ -182,20 +29,185 @@ const Navbar = (props) => {
 
 
 
+
+    const data = useStaticQuery(graphql`
+    query {
+        parentMainMenu: allMenuLinkContentMenuLinkContent(sort: { fields: [weight], order: ASC }
+            filter: { description: { eq: "MainMenu" } }
+        
+        ){
+        edges {
+        node {
+            drupal_id
+            title
+            fields {
+            lowerCaseMenuTitle
+                }
+            }
+        }
+    }
+
+    woodWoodChildMenu: allMenuLinkContentMenuLinkContent (filter: {
+      drupal_parent_menu_item: {
+        eq: "menu_link_content:4b7750d8-0c73-47e5-897c-126cf1f33aa1"
+      }
+    }) {
+        edges {
+      node {
+        drupal_id
+        title
+        drupal_parent_menu_item
+        fields {
+          lowerCaseMenuTitle
+        }
+      }
+    }
+  }
+}
+`)
+
+
+
+
+
+    // sorta working
+    // data.parentMenu.edges.map((edge) => {
+
+    //     const menuTitle = edge.node.title
+    //     console.log(menuTitle)
+    //     const parentID = edge.node.drupal_id
+    // data.childMenu.edges.map((edge) => {
+
+    //     const childID = edge.node.drupal_parent_menu_item
+    //     console.log('child ID ', childID)
+    //     })
+
+        
+        
+    //     // const parentMenu = edge.node.drupal_id
+        
+    // })
+
+
+
+    // const parentMainMenu = data.parentMenu
+    // const childSubMenu = data.childMenu
+    // console.log('this is the parent ', parentMainMenu)
+    // console.log('this is the child menu array', childSubMenu)
+    
+    //     data.parentMainMenu.edges.map((edge) => {
+    //             console.log('what is this', edge)
+            
+    //     })
+
+
+    // sorta working
+    // data.parentMenu.edges.map((edge) => {
+
+    //     const menuTitle = edge.node.title
+    //     console.log(menuTitle)
+    //     const parentID = edge.node.drupal_id
+    // data.childMenu.edges.map((edge) => {
+
+    //     const childID = edge.node.drupal_parent_menu_item
+    //     console.log('these are the child ID ', childID)
+    //     })
+
+        
+        
+    //     // const parentMenu = edge.node.drupal_id
+        
+    // })
+
+
+    console.log(data)
+
+    const woodWoodClad = data.parentMainMenu.edges[0].node.title
+    const woodWoodCladLink = data.parentMainMenu.edges[0].node.fields.lowerCaseMenuTitle
+  
+    const aluminum = data.parentMainMenu.edges[1].node.title
+    const aluminumLink = data.parentMainMenu.edges[1].node.fields.lowerCaseMenuTitle
+
+    const shadingProduct = data.parentMainMenu.edges[2].node.title
+    const shadingProductLink = data.parentMainMenu.edges[2].node.fields.lowerCaseMenuTitle
+
+    const upvc = data.parentMainMenu.edges[3].node.title
+    const upvcLink = data.parentMainMenu.edges[3].node.fields.lowerCaseMenuTitle
+  
+    const steelAndCustom = data.parentMainMenu.edges[4].node.title
+    const steelAndCustomLink = data.parentMainMenu.edges[4].node.fields.lowerCaseMenuTitle
+
+
+    const accessories = data.parentMainMenu.edges[5].node.title
+    const accessoriesLink = data.parentMainMenu.edges[5].node.fields.lowerCaseMenuTitle
+  
+
     return (
-        <>
+    <React.Fragment>
         <NavBar style ={barAnimation}>
             <FlexContainer>
                 <Logo />
                 <NavLinks style={linkAnimation}>
-                    <Link to="/shadingproducts">Shading Products</Link>
-                    <Link to="/windows">Windows</Link>
-                    <Link to="/curtainwalls">Curtain Walls</Link>
-                    <Link to="/hardware">Hardware</Link>
-                    <Link to="/about">About</Link>
-                    <Link to="/contact">Contact</Link>
-                </NavLinks>
+                    <NavItemList>
 
+                        <Link to={woodWoodCladLink}>
+                            {woodWoodClad} 
+                        </Link>
+
+                        <SubMenu>
+                            {data.woodWoodChildMenu.edges.map((edge) => (
+                                <SubMenuItem>
+                                    <Link to={edge.node.fields.lowerCaseMenuTitle}>{edge.node.title}
+                                    
+                                    </Link>
+                                </SubMenuItem>
+                            ))}
+                        
+                        </SubMenu>
+
+
+                    </NavItemList>
+
+                    <li>
+                        <Link to={aluminumLink}>{aluminum}
+                        
+                        </Link>
+                    </li>
+
+
+                    <li>
+                        <Link to={shadingProductLink}>{shadingProduct}
+                        
+                        </Link>
+                    </li>
+
+
+
+                    <li>
+                        <Link to={upvcLink}>{upvc}
+                        
+                        </Link>
+                    </li>
+
+
+
+                    <li>
+                        <Link to={steelAndCustomLink}>{steelAndCustom}
+                        
+                        </Link>
+                    </li>
+
+
+
+                    <li>
+                        <Link to={accessoriesLink}>{accessories}
+                        
+                        </Link>
+                    </li>
+
+
+
+                </NavLinks>
             <BurgerWrapper>
                 <BurgerMenu 
                 navbarState={props.navbarState} 
@@ -203,71 +215,115 @@ const Navbar = (props) => {
                 />
             </BurgerWrapper>
             </FlexContainer>
->>>>>>> 99686ba17ec836a534757918cd0ed2c2a126fa56
         <CollapseMenu />
-      </NavBar>
-      <CollapseMenu
-        navbarState={props.navbarState}
-        handleNavbar={props.handleNavbar}
-      />
-    </>
-  )
+        </NavBar>
+        <CollapseMenu 
+            navbarState={props.navbarState} 
+            handleNavbar={props.handleNavbar}
+            
+        />
+    </React.Fragment>
+    )
 }
 
-const NavItem = styled.li`
-  border: 1px solid red;
+
+
+
+
+
+
+
+
+
+const NavItemList = styled.li`  
+
+    &:hover {
+        border: 1px solid red;
+    }
+    li {
+        display: block;
+    }
+
+   
+       
+    /* & ul {
+        display: none;
+    } */
+    
+   
+
 `
 
-// Styled components here
-<<<<<<< HEAD
-const NavBar = styled(animated.nav)`
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  background: #2d385b;
-  z-index: 1;
-  font-size: 1.4rem;
-`
-=======
-<<<<<<< HEAD
-=======
 
->>>>>>> 1681128df6f74cc3b42a3b2c5c14d1ae7172c199
+
+const SubMenu = styled.ul`
+    border: 1px solid green;
+    /* display: none; */
+
+
+    }
+
+    
+  
+
+
+
+` 
+
+
+const SubMenuItem = styled.li`
+    border: 1px solid brown;
+
+     ul >li {
+        &:hover {
+            display: block;
+        }
+    }
+    
+
+`
+
+
+
+
+
+
+
 const NavBar = styled(animated.nav) `
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background: #2d385b;
-    z-index: 1;
-    font-size: 1.4rem;
+position: fixed;
+width: 100%;
+top: 0;
+left: 0;
+background: #2d385b;
+z-index: 1;
+font-size: 1.4rem;
 `;
->>>>>>> 99686ba17ec836a534757918cd0ed2c2a126fa56
 
 const FlexContainer = styled.div`
-  max-width: 120rem;
-  display: flex;
-  margin: auto;
-  padding: 0 2rem;
-  justify-content: space-between;
-  height: 5rem;
-`
+max-width: 120rem;
+display: flex;
+margin: auto;
+padding: 0 2rem;;
+justify-content: space-between;
+height: 5rem;
+`;
+
 
 const NavLinks = styled(animated.ul)`
-  display: flex;
-  justify-self: end;
-  list-style-type: none;
-  margin: 0;
+display: flex;
+justify-self: end;
+list-style-type: none;
+margin: 0;
 
-  li {
-    padding-top: 29px;
-  }
+li {
+    padding-top: 30px;
+}
 
-  & a {
-    padding-top: -24px;
+
+& a { 
+    padding-top: 24px;
     font-size: 17px;
-    color: #dfe6e9;
+    color: #dfe6e9; 
 
     text-transform: uppercase;
     font-weight: 500;
@@ -278,22 +334,24 @@ const NavLinks = styled(animated.ul)`
     cursor: pointer;
 
     &:hover {
-      color: #fdcb6e;
-      border-bottom: 1px solid #fdcb6e;
+        color: #fdcb6e;
+        border-bottom: 1px solid #fdcb6e;
+
     }
 
     @media (max-width: 1122px) {
-      display: none;
+        display: none;
     }
-  }
-`
+}
+`;
 
 const BurgerWrapper = styled.div`
-  margin: auto 0;
+margin: auto 0;
 
-  @media (min-width: 1121px) {
+@media ( min-width: 1121px) {
     display: none;
-  }
-`
+}
+
+`;
 
 export default Navbar
