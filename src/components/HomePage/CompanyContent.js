@@ -2,6 +2,34 @@ import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import styled from "styled-components"
 
+const CompanyContent = () => {
+  // qurying with ID until i figure out how to make this dynamic
+  // ID's wont change even if you edit content on drupal side
+  const data = useStaticQuery(graphql`
+    query {
+      nodePage(id: { eq: "64fb921b-a30d-5a4a-99f5-510e9de130fa" }) {
+        id
+        title
+        body {
+          value
+        }
+      }
+    }
+  `)
+  console.log(data)
+  const title = data.nodePage.title
+  const body = data.nodePage.body.value
+  return (
+    <CompanyInfo>
+      <h1>{title}</h1>
+      <h3 dangerouslySetInnerHTML={{ __html: body }}></h3>
+      <Link to={``}>
+        <Btn>Learn More</Btn>
+      </Link>
+    </CompanyInfo>
+  )
+}
+
 const Btn = styled.button`
   display: flex;
   color: #2d395b;
@@ -26,34 +54,4 @@ const CompanyInfo = styled.div`
     box-sizing: border-box;
   }
 `
-
-const CompanyContent = () => {
-  // qurying with ID until i figure out how to make this dynamic
-  // ID's wont change even if you edit content on drupal side
-  const data = useStaticQuery(graphql`
-    query {
-      nodePage(id: { eq: "64fb921b-a30d-5a4a-99f5-510e9de130fa" }) {
-        id
-        title
-        body {
-          value
-        }
-      }
-    }
-  `)
-  console.log(data)
-  const title = data.nodePage.title
-  const body = data.nodePage.body.value
-  return (
-    <CompanyInfo>
-      <h1>{title}</h1>
-      <h3 dangerouslySetInnerHTML={{ __html: body }}></h3>
-
-      <Link to={``}>
-        <Btn>Learn More</Btn>
-      </Link>
-    </CompanyInfo>
-  )
-}
-
 export default CompanyContent
