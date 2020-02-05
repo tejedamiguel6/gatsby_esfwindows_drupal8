@@ -62,7 +62,7 @@ const Navbar = props => {
     }
   `)
 
-  console.log(data)
+  // console.log(data)
 
   const woodWoodClad = data.parentMainMenu.edges[0].node.title
   const woodWoodCladLink =

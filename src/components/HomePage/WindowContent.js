@@ -6,14 +6,14 @@ import Img from "gatsby-image"
 const WindowContent = () => {
   const data = useStaticQuery(graphql`
     query {
-      nodeWindows(id: { eq: "202c9211-14e9-5e74-8657-8cd74b76f845" }) {
+      nodePage(id: { eq: "1b8f85d9-161a-56c4-8312-3e812d9d88e5" }) {
         id
         title
         body {
           value
         }
         relationships {
-          field_images {
+          field_basic_page_image {
             localFile {
               childImageSharp {
                 fluid(maxWidth: 900, maxHeight: 640) {
@@ -24,33 +24,61 @@ const WindowContent = () => {
           }
         }
       }
+      windowImages: nodeWindows(
+        id: { eq: "0466764b-6052-53ef-ae08-badaf6835b50" }
+      ) {
+        id
+        title
+        relationships {
+          field_images {
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 250) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
     }
   `)
+
+  console.log(" double queries ", data)
   const image =
-    data.nodeWindows.relationships.field_images.localFile.childImageSharp.fluid
-  const title = data.nodeWindows.title
-  const body = data.nodeWindows.body.value
+    data.nodePage.relationships.field_basic_page_image[0].localFile
+      .childImageSharp.fluid
+
+  const title = data.nodePage.title
+  const body = data.nodePage.body.value
 
   return (
-    <Container>
-      <Img style={{ width: "50%" }} fluid={image} />
+    <>
+      <Container>
+        <Img style={{ width: "50%" }} fluid={image} />
 
-      <HalfTwo>
-        <h1>{title}</h1>
+        <HalfTwo>
+          <h1>{title}</h1>
 
-        <p dangerouslySetInnerHTML={{ __html: body }}></p>
-        <Link to={"/"}>
-          <Btn>Learn More</Btn>
-        </Link>
-      </HalfTwo>
-    </Container>
+          <p dangerouslySetInnerHTML={{ __html: body }}></p>
+        </HalfTwo>
+      </Container>
+      <Link to={"/"}>
+        <Btn>Learn More</Btn>
+      </Link>
+      <FlexContainer>
+        {data.windowImages.relationships.field_images.map(item => {
+          const previewWindowImages = item.localFile.childImageSharp.fluid
+          return <SetImg fluid={previewWindowImages} />
+        })}
+      </FlexContainer>
+    </>
   )
 }
 
 const Container = styled.div`
   background: #f5f5f5;
   display: flex;
-  justify-content: space-between;
 `
 
 const HalfTwo = styled.div`
@@ -78,8 +106,18 @@ const Btn = styled.button`
   text-decoration: none;
   border: none;
   /* border: 1px solid red; */
-  padding: 17px 39px;
+  padding: 25px 39px;
   font-weight: 700;
+`
+
+const FlexContainer = styled.div`
+  display: flex;
+`
+const SetImg = styled(Img)`
+  display: block !important;
+  margin: 0 auto;
+  flex-grow: 1;
+  width: 190px;
 `
 
 export default WindowContent

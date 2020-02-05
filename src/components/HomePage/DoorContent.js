@@ -33,8 +33,6 @@ const DoorContent = () => {
     data.nodeDoors.relationships.field_door_image[0].localFile.childImageSharp
       .fluid
 
-  console.log("gsgsgdsgfds", image)
-
   return (
     <ContainerPadding>
       <Container>
