@@ -1,54 +1,41 @@
-import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
+// import React from 'react'
+// import { graphql, useStaticQuery , Link } from 'gatsby'
 
 
 
-const NavIndex = () => {
 
+// // make menu from drupal dynamic on the frontend
+// const NavIndex = ( ) => {
+//     const data = useStaticQuery(graphql`
+//         query {
+//         allMenuLinkContentMenuLinkContent(
+//         sort: { fields: [weight], order: DESC }
+//         filter: { menu_name: { eq: "main" } }
+//     ){
+//     edges {
+//       node {
+//           title
+//         fields {
+//           lowerCaseMenuTitle
+//         }
+//       }
+//     }
+//   }
+// }
 
-    const data = useStaticQuery(graphql`
-        query {
-  allMenuLinkContentMenuLinkContent(
-    sort: { fields: [weight], order: ASC }
-    filter: { menu_name: { eq: "main" } }
-    ) {
-        edges {
-        node {
-            id
-            drupal_id
-            title
-            link {
-            uri
-            title
-                }
-            expanded
-            changed
-            weight
-            menu_name
-            drupal_parent_menu_item
-            link {
-            uri
-            title
-        }
-      }
-    }
-  }
-}
-`)
+// `)
+// console.log('here is navINdex data',  (data))
 
-console.log('this data is from the NavIndex', data)
-
-    return (
-        <div>
-           <p> Nav from drupal
-                delete this when its you see that it's working
-            </p>
+//     return (
+//         <div>
+//         {data.allMenuLinkContentMenuLinkContent.edges.map((edge) => (
+//             <Link to={`${edge.node.fields.lowerCaseMenuTitle}`}>{edge.node.title}</Link>
+//         )) }
         
-        
-        </div>
-    )
-}
+//         </div>
+//     )
+// }
 
 
-export default NavIndex
+// export default NavIndex
 

@@ -46,7 +46,7 @@ const CompanyContent = () => {
     }
 }
 `)
-console.log(data)
+// console.log(data)
 const title = data.nodePage.title
 const body = data.nodePage.body.value
     return (
