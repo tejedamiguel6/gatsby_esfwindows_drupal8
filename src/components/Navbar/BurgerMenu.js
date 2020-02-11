@@ -11,7 +11,7 @@ const BurgerMenu = (props) => {
                 <span>&nbsp;</span>
             </div>
         </Wrapper>
-        
+
 
     )
 }

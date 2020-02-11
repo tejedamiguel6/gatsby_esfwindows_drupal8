@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStaticQuery, graphql, Link  } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import styled from 'styled-components'
 
 
@@ -46,25 +46,25 @@ const CompanyContent = () => {
     }
 }
 `)
-// console.log(data)
-const title = data.nodePage.title
-const body = data.nodePage.body.value
+    // console.log(data)
+    const title = data.nodePage.title
+    const body = data.nodePage.body.value
     return (
         <CompanyInfo>
             <h1>
                 {title}
             </h1>
-            <h3 dangerouslySetInnerHTML={{__html: body}}></h3>
-            
-            
+            <h3 dangerouslySetInnerHTML={{ __html: body }}></h3>
+
+
             <Link to={``}>
                 <Btn>
                     Learn More
                 </Btn>
 
             </Link>
-            
-        
+
+
         </CompanyInfo>
     )
 }
