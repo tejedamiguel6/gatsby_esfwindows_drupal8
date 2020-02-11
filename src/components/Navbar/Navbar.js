@@ -4,10 +4,10 @@ import Logo from "../Navbar/Logo"
 import BurgerMenu from "./BurgerMenu"
 import CollapseMenu from "./CollapseMenu"
 import { useSpring, animated, config } from "react-spring"
-
 import { Link, useStaticQuery, graphql } from "gatsby"
 
 import styles from "../../styles/index.scss"
+
 
 const Navbar = props => {
     const barAnimation = useSpring({
@@ -26,7 +26,7 @@ const Navbar = props => {
 
     const data = useStaticQuery(graphql`
     query {
-      parentMainMenu: allMenuLinkContentMenuLinkContent(
+     allMenuLinkContentMenuLinkContent(
         sort: { fields: [weight], order: ASC }
         filter: { description: { eq: "MainMenu" } }
       ) {
@@ -43,57 +43,19 @@ const Navbar = props => {
      
     }
   `)
-
-    console.log(data, 'where is bloch')
-
-    const product = data.parentMainMenu.edges[0].node.title
-    const productLink =
-        data.parentMainMenu.edges[0].node.fields.lowerCaseMenuTitle
-
-    const material
-        = data.parentMainMenu.edges[1].node.title
-    const materialLink =
-        data.parentMainMenu.edges[1].node.fields.lowerCaseMenuTitle
-
-    const accessories = data.parentMainMenu.edges[2].node.title
-    const accessoriesLink =
-        data.parentMainMenu.edges[2].node.fields.lowerCaseMenuTitle
-
-    const custom = data.parentMainMenu.edges[3].node.title
-    const customLink = data.parentMainMenu.edges[3].node.fields.lowerCaseMenuTitle
-
-
-    const blog = data.parentMainMenu.edges[6].node.title
-    const blogLink =
-        data.parentMainMenu.edges[6].node.fields.lowerCaseMenuTitle
-
     return (
         <React.Fragment>
             <NavBar style={barAnimation}>
                 <FlexContainer>
                     <Logo />
                     <NavLinks style={linkAnimation}>
-                        <li>
-                            <Link to={productLink}>{product}</Link>
-
-                        </li>
-
-                        <li>
-                            <Link to={materialLink}>{material}</Link>
-                        </li>
-
-                        <li>
-                            <Link to={accessoriesLink}>{accessories}</Link>
-                        </li>
-
-                        <li>
-                            <Link to={customLink}>{custom}</Link>
-                        </li>
-                        <li>
-                            <Link to={blogLink}>{blog}</Link>
-                        </li>
-
-
+                        {data.allMenuLinkContentMenuLinkContent.edges.map((edge) => {
+                            return (
+                                <li>
+                                    <Link to={edge.node.fields.lowerCaseMenuTitle}>{edge.node.title}</Link>
+                                </li>
+                            )
+                        })}
                     </NavLinks>
                     <BurgerWrapper>
                         <BurgerMenu

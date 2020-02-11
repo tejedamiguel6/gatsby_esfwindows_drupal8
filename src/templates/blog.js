@@ -5,20 +5,6 @@ import Img from "gatsby-image"
 import Head from "../components/HomePage/Head"
 import styled from "styled-components"
 
-const BlogLayout = styled.div`
-  max-width: 89 0px;
-  /* margin: 0 auto; */
-  padding-top: 100px;
-  h1 {
-    text-align: center;
-  }
-
-  p {
-    line-height: 1.5;
-    padding-top: 40px;
-    margin-bottom: 30px;
-  }
-`
 
 export const query = graphql`
   query($slug: String!) {
@@ -47,7 +33,7 @@ const Blog = ({ data }) => {
   const post = data.nodeBlog
   const image = data.nodeBlog.relationships.field_blog_image
 
-  console.log(image)
+  console.log(image, 'blog tempalte')
   return (
     <Layout>
       <BlogLayout>
@@ -71,5 +57,22 @@ const Blog = ({ data }) => {
     </Layout>
   )
 }
+
+
+
+const BlogLayout = styled.div`
+  max-width: 89 0px;
+  /* margin: 0 auto; */
+  padding-top: 100px;
+  h1 {
+    text-align: center;
+  }
+
+  p {
+    line-height: 1.5;
+    padding-top: 40px;
+    margin-bottom: 30px;
+  }
+`
 
 export default Blog
