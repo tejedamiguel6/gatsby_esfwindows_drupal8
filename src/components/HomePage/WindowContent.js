@@ -124,4 +124,5 @@ const SetImg = styled(Img)`
   width: 190px;
 `
 
+
 export default WindowContent

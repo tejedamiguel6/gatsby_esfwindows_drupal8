@@ -33,6 +33,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const blogTemplate = path.resolve("./src/templates/blog.js")
   // creating product template
   const productsTemplate = path.resolve('./src/templates/products.js')
+  // creating materials template
+  const materialTemplate = path.resolve('./src/templates/materials.js')
 
   const res = await graphql(`
     query {
@@ -58,13 +60,24 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allNodeMaterials {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `)
   if (res.errors) {
     console.log(res.errors)
   }
   console.log(JSON.stringify(res, null, 3))
-  const { allNodeBlog, allNodeProducts } = res.data
+  const { allNodeBlog, allNodeProducts, allNodeMaterials } = res.data
   allNodeBlog.edges.forEach(({ node }) => {
     createPage({
       component: blogTemplate,
@@ -73,6 +86,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
         slug: node.fields.slug,
       },
     }),
+      // create Products page
       allNodeProducts.edges.forEach(({ node }) => {
         createPage({
           component: productsTemplate,
@@ -81,7 +95,16 @@ module.exports.createPages = async ({ graphql, actions }) => {
             slug: node.fields.slug
           }
         })
-
+      }),
+      // creating materials pages
+      allNodeMaterials.edges.forEach(({ node }) => {
+        createPage({
+          component: materialTemplate,
+          path: `/materials/${node.fields.slug}`,
+          context: {
+            slug: node.fields.slug
+          }
+        })
       })
 
   })

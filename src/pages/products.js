@@ -2,15 +2,15 @@ import React from 'react'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import Layout from "../components/HomePage/Layout"
 import styled from 'styled-components'
+import Img from 'gatsby-image'
 
 
 const Product = () => {
-    const data = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query {
     allNodeProducts {
     edges {
       node {
-        id
         title
         body {
             value
@@ -18,60 +18,107 @@ const Product = () => {
         fields {
           slug
         }
+        relationships {
+          field_products_images {
+            localFile {
+              childImageSharp {
+                fixed(width: 400, height: 240) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  productBasicPage: nodePage(id: { eq: "92f28578-015b-5d98-b057-6bb066b3a04a" }) {
+    title
+    body {
+      value
+    }
+    relationships {
+      field_basic_page_image {
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 6700, maxHeight: 2000) {
+             ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }
 }
 `)
-    return (
-        <Layout>
-            <Products>
-                <h1>Products page</h1>
-                {data.allNodeProducts.edges.map((edge) => {
-                    return (
-                        <li>
-                            <Link to={`/products/${edge.node.fields.slug}`}>
-                                {edge.node.title}
-                            </Link>
-                        </li>
-                    )
-                })}
-            </Products>
-        </Layout>
-    )
+  const productBasicImage = data.productBasicPage.relationships.field_basic_page_image[0].localFile.childImageSharp.fluid
+
+  return (
+    <Layout>
+      <Hero>
+        <h1>{data.productBasicPage.title}</h1>
+        <Img fluid={productBasicImage} />
+        <p dangerouslySetInnerHTML={{ __html: data.productBasicPage.body.value }}></p>
+
+      </Hero>
+      <Products>
+        {data.allNodeProducts.edges.map((edge) => {
+          const productImages = edge.node.relationships.field_products_images[0].localFile.childImageSharp.fixed
+          return (
+            <li>
+              <Link to={`/products/${edge.node.fields.slug}`}>
+                <h1>{edge.node.title}</h1>
+
+                <Img fixed={productImages} />
+              </Link>
+
+
+            </li>
+          )
+        })}
+      </Products>
+    </Layout>
+  )
 }
 
 
-// styled components 
+// styled components
 const Products = styled.ol`
-  list-style-type: none;
-  padding-top: 130px;
-  margin: 0;
-  li {
-    margin: 1rem 0;
-    border: 1px solid red;
-  }
-  a {
-    background: #f4f4f4;
-    color: #000000;
-    padding: 1rem;
-    display: block;
-    text-decoration: none;
-  }
-  a:hover {
-    background: #e4e4e4;
-  }
+      display: flex;
+      justify-content: space-around;
+      flex-flow: wrap;
+      margin: 180px;
 
-  h2 {
-    margin-bottom: 0;
-  }
-
-  p {
-    color: #777777;
-    font-size: 0.8rem;
-    font-style: italic;
-  }
+    li {
+      
+      list-style-type: none;
+    }
+    h1 {
+      font-size: 20px;
+      text-align: center;
+    }
 `
 
+
+
+const Hero = styled.div`
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    padding-top: 120px;
+
+    h1 {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width:100%; height:0;
+    font-size: 25px; line-height: 0;
+    color:white;
+    position:absolute; top:50%;
+      text-align: center;
+
+    }
+
+`
 
 export default Product
