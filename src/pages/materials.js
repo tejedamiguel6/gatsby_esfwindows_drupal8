@@ -40,7 +40,7 @@ const Materials = () => {
       field_basic_page_image {
         localFile {
           childImageSharp {
-            fluid(maxWidth: 6400, maxHeight: 2000) {
+            fluid(maxWidth: 6400, maxHeight: 2400) {
              ...GatsbyImageSharpFluid
             }
           }
@@ -122,8 +122,10 @@ const Hero = styled.div`
 
 const FlexContainer = styled.ul`
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   flex-wrap: wrap;
+
+  
 h1 {
   margin-top: 19px;
   font-size: 18px;
@@ -136,14 +138,17 @@ li {
     text-decoration: none;
     color: #000;
    }
+   
 }
 
 `
 const SetImg = styled(Img)`
   display: block !important;
-  margin: 0 auto;
+  margin: 6px;
   flex-grow: 1;
   width: 320px;
+  border-radius: 2%;
+
 `
 
 

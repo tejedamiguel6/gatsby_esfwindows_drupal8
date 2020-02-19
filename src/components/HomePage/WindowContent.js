@@ -44,7 +44,6 @@ const WindowContent = () => {
     }
   `)
 
-  console.log(" double queries ", data)
   const image =
     data.nodePage.relationships.field_basic_page_image[0].localFile
       .childImageSharp.fluid

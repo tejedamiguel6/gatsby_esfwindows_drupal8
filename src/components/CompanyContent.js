@@ -4,33 +4,7 @@ import styled from 'styled-components'
 
 
 
-const Btn = styled.button`
-        display: flex;
-        color: #2D395B;
-        margin: 0 auto;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        text-decoration: none;
-        border: none;
-        padding: 17px 39px;
-        font-weight: 700; 
-`
 
-
-const CompanyInfo = styled.div`
-    padding: 70px;
-        h1 {
-            text-align: center;
-
-        }
-        h3 {
-            text-align: center;
-            font-size: 19px;
-            color: #848484;
-            box-sizing: border-box
-        }
-
-`
 
 const CompanyContent = () => {
     // qurying with ID until i figure out how to make this dynamic
@@ -68,5 +42,37 @@ const CompanyContent = () => {
         </CompanyInfo>
     )
 }
+
+
+
+
+
+const Btn = styled.button`
+        display: flex;
+        color: #2D395B;
+        margin: 0 auto;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: none;
+        padding: 17px 39px;
+        font-weight: 700; 
+`
+
+
+const CompanyInfo = styled.div`
+    padding: 70px;
+        h1 {
+            text-align: center;
+
+        }
+        h3 {
+            text-align: center;
+            font-size: 19px;
+            color: #848484;
+            box-sizing: border-box
+        }
+
+`
 
 export default CompanyContent
