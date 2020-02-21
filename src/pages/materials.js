@@ -7,7 +7,6 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 
 
 const Materials = () => {
-
   const data = useStaticQuery(graphql`
     query {
     allNodeMaterials {
@@ -21,7 +20,7 @@ const Materials = () => {
           field_materials_images {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 400, maxHeight: 240) {
+                fluid(maxWidth: 420, maxHeight: 240) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -40,7 +39,7 @@ const Materials = () => {
       field_basic_page_image {
         localFile {
           childImageSharp {
-            fluid(maxWidth: 6400, maxHeight: 2400) {
+            fluid(maxWidth: 1575, maxHeight: 900) {
              ...GatsbyImageSharpFluid
             }
           }
@@ -50,17 +49,17 @@ const Materials = () => {
   }
 }
 `)
-  console.log(data.allNodeMaterials, 'this is the data')
   const materialBasicImage = data.materialBasicPage.relationships.field_basic_page_image[0].localFile.childImageSharp.fluid
   return (
     <div>
+
       <Layout>
         <Hero>
           <Img fluid={materialBasicImage} />
           <h1>Our Materials</h1>
           <p dangerouslySetInnerHTML={{ __html: data.materialBasicPage.body.value }}></p>
         </Hero>
-
+        <h1>hello</h1>
         <FlexContainer>
           {data.allNodeMaterials.edges.map((edge) => {
             const images = edge.node.relationships.field_materials_images[0].localFile.childImageSharp.fluid
@@ -88,25 +87,12 @@ const Materials = () => {
 
 
 const Hero = styled.div`
-        position: relative;
-        display: inline-block;
-        text-align: center;
-        padding: 120px 0 60px 0;
+h1 {
+  text-align: center;
+  padding-top: 3rem;
+}
        
-    
-    h1 {
-      display: block;
-      position: absolute;
-      z-index: 1;
-      width:100%; 
-      height:0;
-      font-size: 25px; line-height: 0;
-      color:white;
-      position:absolute; top:50%;
-      text-align: center;
-  
-      }
-
+   
       h3 {
         padding: 30px 0 0 0;
         width: 1090px;
@@ -121,9 +107,12 @@ const Hero = styled.div`
   `
 
 const FlexContainer = styled.ul`
+  padding: 30px;
   display: flex;
   /* flex-direction: row; */
   flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 60px auto;
 
   
 h1 {
@@ -143,6 +132,7 @@ li {
 
 `
 const SetImg = styled(Img)`
+
   display: block !important;
   margin: 6px;
   flex-grow: 1;

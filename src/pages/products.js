@@ -82,6 +82,7 @@ const Product = () => {
 }
 
 
+
 // styled components
 const Products = styled.ol`
       display: flex;

@@ -35,6 +35,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const productsTemplate = path.resolve('./src/templates/products.js')
   // creating materials template
   const materialTemplate = path.resolve('./src/templates/materials.js')
+  // creating custom page tempalte
+  const customTemplate = path.resolve('./src/templates/custom.js')
 
   const res = await graphql(`
     query {
@@ -71,13 +73,25 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allNodeCustom {
+        edges {
+          node {
+            id
+            title 
+            fields {
+              slug
+            }
+          }
+        }
+      }
     }
   `)
   if (res.errors) {
     console.log(res.errors)
   }
   console.log(JSON.stringify(res, null, 3))
-  const { allNodeBlog, allNodeProducts, allNodeMaterials } = res.data
+  // destructuring the queries
+  const { allNodeBlog, allNodeProducts, allNodeMaterials, allNodeCustom } = res.data
   allNodeBlog.edges.forEach(({ node }) => {
     createPage({
       component: blogTemplate,
@@ -105,7 +119,18 @@ module.exports.createPages = async ({ graphql, actions }) => {
             slug: node.fields.slug
           }
         })
+      }),
+      // creating custom pages
+      allNodeCustom.edges.forEach(({ node }) => {
+        createPage({
+          component: customTemplate,
+          path: `/custom/${node.fields.slug}`,
+          contect: {
+            slug: node.fields.slug
+          }
+        })
       })
+
 
   })
 

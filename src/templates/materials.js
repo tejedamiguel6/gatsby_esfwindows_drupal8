@@ -23,18 +23,16 @@ query($slug: String!) {
 
 
 
+
 const Materials = () => {
-    return (
-        <div>
-            <Layout>
-                <h1>Materials template is here</h1>
+  return (
+    <div>
+      <Layout>
+        <h1>Materials template is here</h1>
+      </Layout>
 
-
-
-            </Layout>
-
-        </div>
-    )
+    </div>
+  )
 }
 
 
