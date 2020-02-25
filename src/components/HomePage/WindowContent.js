@@ -53,8 +53,6 @@ const WindowContent = () => {
 
   return (
     <>
-
-
       <Container>
         <Img style={{ width: "50%" }} fluid={image} />
 

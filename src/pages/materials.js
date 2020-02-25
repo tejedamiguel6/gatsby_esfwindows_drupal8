@@ -59,7 +59,6 @@ const Materials = () => {
           <h1>Our Materials</h1>
           <p dangerouslySetInnerHTML={{ __html: data.materialBasicPage.body.value }}></p>
         </Hero>
-        <h1>hello</h1>
         <FlexContainer>
           {data.allNodeMaterials.edges.map((edge) => {
             const images = edge.node.relationships.field_materials_images[0].localFile.childImageSharp.fluid

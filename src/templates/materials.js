@@ -11,7 +11,7 @@ query($slug: String!) {
       field_products_images {
         localFile {
           childImageSharp {
-            fluid(maxWidth: 1008, maxHeight: 108 ) {
+            fluid(maxWidth: 1008, maxHeight: 708 ) {
               ...GatsbyImageSharpFluid
             }
           }

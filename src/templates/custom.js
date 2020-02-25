@@ -15,7 +15,7 @@ query($slug: String!) {
         localFile {
           childImageSharp {
             fluid(maxWidth: 600, maxHeight: 700) {
-              base64
+              ...GatsbyImageSharpFluid
             }
           }
         }
@@ -25,8 +25,8 @@ query($slug: String!) {
 }`
 
 
-
 const Custom = () => {
+    
     return (
         <div>
             <Layout>

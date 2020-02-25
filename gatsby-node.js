@@ -12,7 +12,7 @@ module.exports.onCreateNode = ({ node, actions }) => {
       name: "slug",
       value: slug,
     })
-  } if (node.internal.type === "menu_link_content__menu_link_content") {
+  } if (node.internal.type === 'menu_link_content__menu_link_content') {
     const navTitle = node.title
     const lowerCaseNav = navTitle
       .toLowerCase(navTitle)
@@ -30,7 +30,7 @@ module.exports.onCreateNode = ({ node, actions }) => {
 // creating pages
 module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const blogTemplate = path.resolve("./src/templates/blog.js")
+  const blogTemplate = path.resolve('./src/templates/blog.js')
   // creating product template
   const productsTemplate = path.resolve('./src/templates/products.js')
   // creating materials template

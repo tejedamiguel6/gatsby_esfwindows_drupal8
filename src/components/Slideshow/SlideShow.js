@@ -6,7 +6,6 @@ import { Carousel } from 'react-responsive-carousel'
 
 
 const SlideShow = () => {
-
   const data = useStaticQuery(graphql`
 query {
     allNodeHomeSlideshow {
@@ -27,7 +26,6 @@ query {
     }
   }
 }`)
-
   return (
     <div>
       <Carousel
@@ -44,7 +42,6 @@ query {
           )
         })}
       </Carousel>
-
     </div>
   )
 }
