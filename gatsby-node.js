@@ -3,16 +3,20 @@ const path = require("path")
 // blog template slug
 module.exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
-  if (node.internal.owner === 'gatsby-source-drupal') {
+  if (node.internal.owner === "gatsby-source-drupal") {
     // console.log(JSON.stringify(node, undefined, 3))
     const oldSlug = node.title
-    const slug = oldSlug.toLowerCase(oldSlug).split(' ').join('-')
+    const slug = oldSlug
+      .toLowerCase(oldSlug)
+      .split(" ")
+      .join("-")
     createNodeField({
       node,
       name: "slug",
       value: slug,
     })
-  } if (node.internal.type === 'menu_link_content__menu_link_content') {
+  }
+  if (node.internal.type === "menu_link_content__menu_link_content") {
     const navTitle = node.title
     const lowerCaseNav = navTitle
       .toLowerCase(navTitle)
@@ -26,17 +30,18 @@ module.exports.onCreateNode = ({ node, actions }) => {
   }
 }
 
-
 // creating pages
 module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const blogTemplate = path.resolve('./src/templates/blog.js')
+  const blogTemplate = path.resolve("./src/templates/blog.js")
   // creating product template
-  const productsTemplate = path.resolve('./src/templates/products.js')
+  const productsTemplate = path.resolve("./src/templates/products.js")
   // creating materials template
-  const materialTemplate = path.resolve('./src/templates/materials.js')
+  const materialTemplate = path.resolve("./src/templates/materials.js")
   // creating custom page tempalte
-  const customTemplate = path.resolve('./src/templates/custom.js')
+  const customTemplate = path.resolve("./src/templates/custom.js")
+  // creating accessories template
+  const accessoriesTemplate = path.resolve("./src/templates/accessories.js")
 
   const res = await graphql(`
     query {
@@ -77,7 +82,18 @@ module.exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             id
-            title 
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeAccessories {
+        edges {
+          node {
+            id
+            title
             fields {
               slug
             }
@@ -91,7 +107,13 @@ module.exports.createPages = async ({ graphql, actions }) => {
   }
   console.log(JSON.stringify(res, null, 3))
   // destructuring the queries
-  const { allNodeBlog, allNodeProducts, allNodeMaterials, allNodeCustom } = res.data
+  const {
+    allNodeBlog,
+    allNodeProducts,
+    allNodeMaterials,
+    allNodeCustom,
+    allNodeAccessories,
+  } = res.data
   allNodeBlog.edges.forEach(({ node }) => {
     createPage({
       component: blogTemplate,
@@ -106,8 +128,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
           component: productsTemplate,
           path: `/products/${node.fields.slug}`,
           context: {
-            slug: node.fields.slug
-          }
+            slug: node.fields.slug,
+          },
         })
       }),
       // creating materials pages
@@ -116,8 +138,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
           component: materialTemplate,
           path: `/materials/${node.fields.slug}`,
           context: {
-            slug: node.fields.slug
-          }
+            slug: node.fields.slug,
+          },
         })
       }),
       // creating custom pages
@@ -125,13 +147,19 @@ module.exports.createPages = async ({ graphql, actions }) => {
         createPage({
           component: customTemplate,
           path: `/custom/${node.fields.slug}`,
-          contect: {
-            slug: node.fields.slug
-          }
+          context: {
+            slug: node.fields.slug,
+          },
+        })
+      }),
+      allNodeAccessories.edges.forEach(({ node }) => {
+        createPage({
+          component: accessoriesTemplate,
+          path: `/accessories/${node.fields.slug}`,
+          context: {
+            slug: node.fields.slug,
+          },
         })
       })
-
-
   })
-
 }

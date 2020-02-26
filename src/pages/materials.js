@@ -1,26 +1,45 @@
-import React from 'react'
-import Layout from '../components/Layout'
-import Img from 'gatsby-image'
-import styled from 'styled-components'
-import { Link, useStaticQuery, graphql } from 'gatsby'
-
-
+import React from "react"
+import Layout from "../components/Layout"
+import Img from "gatsby-image"
+import styled from "styled-components"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
 const Materials = () => {
   const data = useStaticQuery(graphql`
     query {
-    allNodeMaterials {
-      edges {
-        node {
+      allNodeMaterials {
+        edges {
+          node {
+            title
+            fields {
+              slug
+            }
+            relationships {
+              field_materials_images {
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 420, maxHeight: 240) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      materialBasicPage: nodePage(
+        id: { eq: "bbdf6723-50cf-5efd-aebd-35e11c82fa70" }
+      ) {
         title
-          fields {
-            slug
+        body {
+          value
         }
         relationships {
-          field_materials_images {
+          field_basic_page_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 420, maxHeight: 240) {
+                fluid(maxWidth: 1575, maxHeight: 900) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -29,39 +48,28 @@ const Materials = () => {
         }
       }
     }
-}
-  materialBasicPage: nodePage(id: { eq: "bbdf6723-50cf-5efd-aebd-35e11c82fa70" }) {
-    title
-    body {
-      value
-    }
-    relationships {
-      field_basic_page_image {
-        localFile {
-          childImageSharp {
-            fluid(maxWidth: 1575, maxHeight: 900) {
-             ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    }
-  }
-}
-`)
-  const materialBasicImage = data.materialBasicPage.relationships.field_basic_page_image[0].localFile.childImageSharp.fluid
+  `)
+  const materialBasicImage =
+    data.materialBasicPage.relationships.field_basic_page_image[0].localFile
+      .childImageSharp.fluid
   return (
     <div>
-
       <Layout>
-        <Hero>
-          <Img fluid={materialBasicImage} />
+        <Img fluid={materialBasicImage} />
+        <About>
           <h1>Our Materials</h1>
-          <p dangerouslySetInnerHTML={{ __html: data.materialBasicPage.body.value }}></p>
-        </Hero>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: data.materialBasicPage.body.value,
+            }}
+          ></p>
+        </About>
+
         <FlexContainer>
-          {data.allNodeMaterials.edges.map((edge) => {
-            const images = edge.node.relationships.field_materials_images[0].localFile.childImageSharp.fluid
+          {data.allNodeMaterials.edges.map(edge => {
+            const images =
+              edge.node.relationships.field_materials_images[0].localFile
+                .childImageSharp.fluid
             return (
               <li>
                 <Link to={`/materials/${edge.node.fields.slug}`}>
@@ -70,9 +78,11 @@ const Materials = () => {
                     <div>
                       <SetImg fluid={images} />
                     </div>
-                  ) :
-                    <div><p>Image not available</p> </div>
-                  }
+                  ) : (
+                    <div>
+                      <p>Image not available</p>{" "}
+                    </div>
+                  )}
                 </Link>
               </li>
             )
@@ -83,65 +93,46 @@ const Materials = () => {
   )
 }
 
+// styled Components
+const About = styled.div`
+  padding: 30px;
+  margin: 20px auto;
 
-
-const Hero = styled.div`
-h1 {
-  text-align: center;
-  padding-top: 3rem;
-}
-       
-   
-      h3 {
-        padding: 30px 0 0 0;
-        width: 1090px;
-      }
-
-      p {
-        text-align: center;
-        padding: 30px 0 0 0;
-        font-weight: 30;
-      }
-  
-  `
+  h1 {
+    text-align: center;
+  }
+`
 
 const FlexContainer = styled.ul`
-  padding: 30px;
+  padding: 0.6rem;
   display: flex;
   /* flex-direction: row; */
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 60px auto;
 
-  
-h1 {
-  margin-top: 19px;
-  font-size: 18px;
-  text-align: center;
-}
+  h1 {
+    font-size: 18px;
+  }
 
-li {
-  list-style-type: none;
-   a {
-    text-decoration: none;
-    color: #000;
-   }
-   
-}
+  li {
+    margin: 1rem;
 
+    list-style-type: none;
+    text-align: center;
+    font-weight: 30;
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+  }
 `
 const SetImg = styled(Img)`
-
   display: block !important;
   margin: 6px;
   flex-grow: 1;
-  width: 320px;
+  width: 330px;
   border-radius: 2%;
-
 `
 
-
-
-
-
-export default Materials 
+export default Materials

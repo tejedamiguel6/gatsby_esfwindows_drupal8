@@ -8,25 +8,24 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 
 import styles from "../../styles/index.scss"
 
-
 const Navbar = props => {
-    const barAnimation = useSpring({
-        from: { transform: "translate3d(0, -10rem, 0" },
-        to: { transform: "translate3d(0, 0, 0)", opacity: 1 },
-        delay: 20,
-        config: config.wobbly,
-    })
+  const barAnimation = useSpring({
+    from: { transform: "translate3d(0, -10rem, 0" },
+    to: { transform: "translate3d(0, 0, 0)", opacity: 1 },
+    delay: 20,
+    config: config.wobbly,
+  })
 
-    const linkAnimation = useSpring({
-        from: { transform: "translate3d(0, 30px, 0)", opcaity: 0 },
-        to: { transform: "translate3d(0, 0, 0)", opcaity: 1 },
-        delay: 20,
-        config: config.wobbly,
-    })
+  const linkAnimation = useSpring({
+    from: { transform: "translate3d(0, 30px, 0)", opcaity: 0 },
+    to: { transform: "translate3d(0, 0, 0)", opcaity: 1 },
+    delay: 20,
+    config: config.wobbly,
+  })
 
-    const data = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query {
-     allMenuLinkContentMenuLinkContent(
+      allMenuLinkContentMenuLinkContent(
         sort: { fields: [weight], order: ASC }
         filter: { description: { eq: "MainMenu" } }
       ) {
@@ -40,43 +39,40 @@ const Navbar = props => {
           }
         }
       }
-     
     }
   `)
-    return (
-        <React.Fragment>
-            <NavBar style={barAnimation}>
-                <FlexContainer>
-                    <Logo />
-                    <NavLinks style={linkAnimation}>
-                        {data.allMenuLinkContentMenuLinkContent.edges.map((edge) => {
-                            return (
-                                <li>
-                                    <Link to={edge.node.fields.lowerCaseMenuTitle}>{edge.node.title}</Link>
-                                </li>
-                            )
-                        })}
-                    </NavLinks>
-                    <BurgerWrapper>
-                        <BurgerMenu
-                            navbarState={props.navbarState}
-                            handleNavbar={props.handleNavbar}
-                        />
-                    </BurgerWrapper>
-                </FlexContainer>
-                <CollapseMenu />
-            </NavBar>
-            <CollapseMenu
-                navbarState={props.navbarState}
-                handleNavbar={props.handleNavbar}
+  return (
+    <React.Fragment>
+      <NavBar style={barAnimation}>
+        <FlexContainer>
+          <Logo />
+          <NavLinks style={linkAnimation}>
+            {data.allMenuLinkContentMenuLinkContent.edges.map(edge => {
+              return (
+                <li>
+                  <Link to={edge.node.fields.lowerCaseMenuTitle}>
+                    {edge.node.title}
+                  </Link>
+                </li>
+              )
+            })}
+          </NavLinks>
+          <BurgerWrapper>
+            <BurgerMenu
+              navbarState={props.navbarState}
+              handleNavbar={props.handleNavbar}
             />
-        </React.Fragment>
-    )
+          </BurgerWrapper>
+        </FlexContainer>
+        <CollapseMenu />
+      </NavBar>
+      <CollapseMenu
+        navbarState={props.navbarState}
+        handleNavbar={props.handleNavbar}
+      />
+    </React.Fragment>
+  )
 }
-
-
-
-
 
 const NavBar = styled(animated.nav)`
   position: fixed;
