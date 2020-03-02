@@ -58,6 +58,7 @@ const WindowContent = () => {
       <Img style={{ width: "50%" }} fluid={image} />
 
       <HalfTwo>
+        <h1>huhuhuh</h1>
         <h1>{title}</h1>
 
         <p dangerouslySetInnerHTML={{ __html: body }}></p>

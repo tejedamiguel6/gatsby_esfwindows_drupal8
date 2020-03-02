@@ -42,6 +42,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const customTemplate = path.resolve("./src/templates/custom.js")
   // creating accessories template
   const accessoriesTemplate = path.resolve("./src/templates/accessories.js")
+  // creating Company/about us page
+  const companyTemplate = path.resolve("./src/templates/company.js")
 
   const res = await graphql(`
     query {
@@ -90,6 +92,17 @@ module.exports.createPages = async ({ graphql, actions }) => {
         }
       }
       allNodeAccessories {
+        edges {
+          node {
+            id
+            title
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      allNodeCompany {
         edges {
           node {
             id

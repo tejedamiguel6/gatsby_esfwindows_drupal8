@@ -13,18 +13,26 @@ const CompanyContent = () => {
         body {
           value
         }
+        field_basic_page_link {
+          title
+        }
+        fields {
+          slug
+        }
       }
     }
   `)
-  console.log('company', data)
+  console.log("company", data)
   const title = data.nodePage.title
   const body = data.nodePage.body.value
+  const button = data.nodePage.field_basic_page_link[0].title
+
   return (
     <CompanyInfo>
       <h1>{title}</h1>
       <h3 dangerouslySetInnerHTML={{ __html: body }}></h3>
-      <Link to={``}>
-        <Btn>Learn More</Btn>
+      <Link to={data.nodePage.fields.slug}>
+        <Btn>{button}</Btn>
       </Link>
     </CompanyInfo>
   )

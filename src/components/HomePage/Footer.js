@@ -4,7 +4,7 @@ import styled from "styled-components"
 const Footer = () => {
   return (
     <Container>
-      <p>Esfwindows. © 201998789</p>
+      <p>Esfwindows</p>
     </Container>
   )
 }

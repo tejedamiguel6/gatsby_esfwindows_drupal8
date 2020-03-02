@@ -76,7 +76,6 @@ const Product = () => {
             <li>
               <Link to={`/products/${edge.node.fields.slug}`}>
                 <h1>{edge.node.title}</h1>
-
                 <SetImg fluid={productImages} />
               </Link>
             </li>
@@ -108,11 +107,10 @@ const FlexContainer = styled.ul`
     margin: 1rem;
     list-style-type: none;
     text-align: center;
-    font-weight: 30;
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   a {

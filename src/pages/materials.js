@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../components/Layout"
 import Img from "gatsby-image"
 import styled from "styled-components"
+
 import { Link, useStaticQuery, graphql } from "gatsby"
 
 const Materials = () => {
@@ -39,7 +40,7 @@ const Materials = () => {
           field_basic_page_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 1575, maxHeight: 900) {
+                fluid(maxWidth: 1575, maxHeight: 700) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -56,6 +57,7 @@ const Materials = () => {
     <div>
       <Layout>
         <Img fluid={materialBasicImage} />
+
         <About>
           <h1>Our Materials</h1>
           <p

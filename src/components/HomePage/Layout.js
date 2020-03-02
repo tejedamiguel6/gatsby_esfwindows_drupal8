@@ -35,7 +35,6 @@ const StyledPage = styled.div`
   color: black;
 `
 const InnerPage = styled.div`
-
   /* border: 1px solid red; */
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
