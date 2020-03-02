@@ -28,19 +28,33 @@ export const query = graphql`
 const Accessories = ({ data }) => {
   const title = data.nodeAccessories.title
   const body = data.nodeAccessories.body.value
-  // const image =
-  //   data.nodeAccessories.relationships.field_accessories_image[0].localFile
-  //     .childImageSharp.fluid
+  const image = data.nodeAccessories.relationships.field_accessories_image[0].localFile.childImageSharp.fluid
 
-  console.log(data)
+
+  console.log(image, '999999!!')
   return (
     <Layout>
       <Container>
         <h1>{title}</h1>
 
-        <AccessoriesStyle>
-          <p dangerouslySetInnerHTML={{ __html: body }}></p>
-        </AccessoriesStyle>
+        {image && body ? (
+          <div>
+            <h1>{title}</h1>
+
+            <AccessoriesStyle>
+              <p dangerouslySetInnerHTML={{ __html: body }}></p>
+            </AccessoriesStyle>
+
+
+          </div>
+        ) :
+          <div>
+            <p dangerouslySetInnerHTML={{ __html: body }}></p>
+
+
+          </div>}
+
+
       </Container>
     </Layout>
   )
