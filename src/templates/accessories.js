@@ -35,7 +35,6 @@ const Accessories = ({ data }) => {
   return (
     <Layout>
       <Container>
-        <h1>{title}</h1>
 
         {image && body ? (
           <div>
@@ -44,12 +43,12 @@ const Accessories = ({ data }) => {
             <AccessoriesStyle>
               <p dangerouslySetInnerHTML={{ __html: body }}></p>
             </AccessoriesStyle>
-
-
           </div>
         ) :
           <div>
-            <p dangerouslySetInnerHTML={{ __html: body }}></p>
+            {/* <p dangerouslySetInnerHTML={{ __html: body }}></p> */}
+            <h1>No content yet</h1>
+            {title}
 
 
           </div>}
