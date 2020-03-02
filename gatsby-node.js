@@ -1,15 +1,12 @@
 const path = require("path")
 
-// blog template slug
+// template slug
 module.exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
   if (node.internal.owner === "gatsby-source-drupal") {
     // console.log(JSON.stringify(node, undefined, 3))
     const oldSlug = node.title
     const slug = oldSlug
-      .toLowerCase(oldSlug)
-      .split(" ")
-      .join("-")
     createNodeField({
       node,
       name: "slug",
@@ -18,10 +15,7 @@ module.exports.onCreateNode = ({ node, actions }) => {
   }
   if (node.internal.type === "menu_link_content__menu_link_content") {
     const navTitle = node.title
-    const lowerCaseNav = navTitle
-      .toLowerCase(navTitle)
-      .split(" ")
-      .join("-")
+    const lowerCaseNav = navTitle.toLowerCase(navTitle).split(" ").join("-")
     createNodeField({
       node,
       name: "lowerCaseMenuTitle",
