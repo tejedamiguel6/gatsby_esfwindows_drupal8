@@ -16,7 +16,7 @@ const WindowContent = () => {
           field_basic_page_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 900, maxHeight: 950) {
+                fluid(maxWidth: 900, maxHeight: 640) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -33,7 +33,7 @@ const WindowContent = () => {
           field_basic_page_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 250) {
+                fluid(maxWidth: 200) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -50,7 +50,6 @@ const WindowContent = () => {
 
   const title = data.nodePage.title
   const body = data.nodePage.body.value
-  console.log(data.windowImages, "******")
 
   return (
     <>
@@ -68,12 +67,12 @@ const WindowContent = () => {
       <Link to={"/"}>
         <Btn>Learn More</Btn>
       </Link>
-      {/* <FlexContainer>
+      <FlexContainer>
         {data.windowImages.relationships.field_basic_page_image.map(item => {
           const previewWindowImages = item.localFile.childImageSharp.fluid
           return <SetImg fluid={previewWindowImages} />
         })}
-      </FlexContainer> */}
+      </FlexContainer>
     </>
   )
 }
@@ -82,8 +81,6 @@ const Container = styled.div`
   /* border: 2px solid green; */
   background: #f5f5f5;
   display: flex;
-  max-width: 2543px;
-  margin: auto;
 
   /* @media (max-width: 700px) {
     display: flex;
@@ -106,7 +103,7 @@ const Top = styled.div`
   h1 {
     /* border: 1px solid red; */
     text-align: center;
-    margin-top: 39px;
+    margin-top: 30px;
   }
 
   p {
@@ -134,14 +131,14 @@ const Btn = styled.button`
   font-weight: 700;
 `
 
-// const FlexContainer = styled.div`
-//   display: flex;
-// `
-// const SetImg = styled(Img)`
-//   display: block !important;
-//   margin: 0 auto;
-//   flex-grow: 1;
-//   width: 190px;
-// `
+const FlexContainer = styled.div`
+  display: flex;
+`
+const SetImg = styled(Img)`
+  display: block !important;
+  margin: 0 auto;
+  flex-grow: 1;
+  width: 190px;
+`
 
 export default WindowContent
