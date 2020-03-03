@@ -1,24 +1,34 @@
-const path = require("path")
+const path = require('path')
 
 // template slug
 module.exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
-  if (node.internal.owner === "gatsby-source-drupal") {
+  if (node.internal.owner === 'gatsby-source-drupal') {
     // console.log(JSON.stringify(node, undefined, 3))
     const oldSlug = node.title
+    if (node.title == undefined) {
+      return null
+    }
+    // console.log(oldSlug, '@@@))((**&*')
     const slug = oldSlug
+      .toLowerCase(oldSlug)
+      .split(' ')
+      .join('-')
     createNodeField({
       node,
-      name: "slug",
+      name: 'slug',
       value: slug,
     })
   }
-  if (node.internal.type === "menu_link_content__menu_link_content") {
+  if (node.internal.type === 'menu_link_content__menu_link_content') {
     const navTitle = node.title
-    const lowerCaseNav = navTitle.toLowerCase(navTitle).split(" ").join("-")
+    const lowerCaseNav = navTitle
+      .toLowerCase(navTitle)
+      .split(' ')
+      .join('-')
     createNodeField({
       node,
-      name: "lowerCaseMenuTitle",
+      name: 'lowerCaseMenuTitle',
       value: lowerCaseNav,
     })
   }
@@ -27,17 +37,17 @@ module.exports.onCreateNode = ({ node, actions }) => {
 // creating pages
 module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const blogTemplate = path.resolve("./src/templates/blog.js")
+  const blogTemplate = path.resolve('./src/templates/blog.js')
   // creating product template
-  const productsTemplate = path.resolve("./src/templates/products.js")
+  const productsTemplate = path.resolve('./src/templates/products.js')
   // creating materials template
-  const materialTemplate = path.resolve("./src/templates/materials.js")
+  const materialTemplate = path.resolve('./src/templates/materials.js')
   // creating custom page tempalte
-  const customTemplate = path.resolve("./src/templates/custom.js")
+  const customTemplate = path.resolve('./src/templates/custom.js')
   // creating accessories template
-  const accessoriesTemplate = path.resolve("./src/templates/accessories.js")
+  const accessoriesTemplate = path.resolve('./src/templates/accessories.js')
   // creating Company/about us page
-  const companyTemplate = path.resolve("./src/templates/company.js")
+  const companyTemplate = path.resolve('./src/templates/company.js')
 
   const res = await graphql(`
     query {

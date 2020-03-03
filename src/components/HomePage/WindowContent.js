@@ -44,10 +44,7 @@ const WindowContent = () => {
     }
   `)
 
-  const image =
-    data.nodePage.relationships.field_basic_page_image[0].localFile
-      .childImageSharp.fluid
-
+  const image = data.nodePage.relationships.field_basic_page_image[0].localFile.childImageSharp.fluid
   const title = data.nodePage.title
   const body = data.nodePage.body.value
 
