@@ -16,7 +16,6 @@ const Home = () => {
       <CompanyContent />
       <WindowContent />
       <DoorContent />
-
       <Quote />
     </Layout>
   )

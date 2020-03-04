@@ -15,6 +15,8 @@ class Form extends React.Component {
   handleSubmit = event => {
     event.preventDefault()
     console.log(this.state)
+    const { firstName } = this.state
+    navigate('/quote-received/', { state: { firstName } })
   }
 
   handleChange = event => {
