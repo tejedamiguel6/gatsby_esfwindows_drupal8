@@ -30,9 +30,8 @@ const Footer = () => {
 
 const Container = styled.footer`
   background-color: #282828;
-  margin-top: 9rem;
-
-  padding-top: 2.2rem;
+  /* margin-top: 1rem; */
+  padding-bottom: 10px;
   text-align: center;
 
   p,

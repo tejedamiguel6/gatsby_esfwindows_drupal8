@@ -72,7 +72,7 @@ class Form extends React.Component {
                 Email:
                 <input
                   name="email"
-                  type="text"
+                  type="email"
                   id="email"
                   plaheholder="Your name"
                   autoComplete="off"
