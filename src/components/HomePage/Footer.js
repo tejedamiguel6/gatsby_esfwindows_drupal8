@@ -18,9 +18,6 @@ const Footer = () => {
       }
     }
   `)
-
-  console.log(data)
-
   return (
     <Container>
       <div>

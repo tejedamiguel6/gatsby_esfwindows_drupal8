@@ -5,9 +5,8 @@ import Welcome from '../components/HomePage/Welcome'
 import CompanyContent from '../components/HomePage/CompanyContent'
 import WindowContent from '../components/HomePage/WindowContent'
 import DoorContent from '../components/HomePage/DoorContent'
-import Footer from '../components//HomePage/Footer'
 
-import Form from '../components/form'
+import Quote from '../components/HomePage/QuoteRequest'
 
 const Home = () => {
   return (
@@ -18,7 +17,7 @@ const Home = () => {
       <WindowContent />
       <DoorContent />
 
-      <Form />
+      <Quote />
     </Layout>
   )
 }
