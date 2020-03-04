@@ -36,9 +36,7 @@ const Company = () => {
       <Layout>
         {data.allNodeCompany.edges.map(edge => {
           console.log(edge, "^66666^^^^")
-          const image =
-            edge.node.relationships.field_company[0].localFile.childImageSharp
-              .fluid
+          const image = edge.node.relationships.field_company[0].localFile.childImageSharp.fluid
           const body = edge.node.body.value
 
           console.log(edge)

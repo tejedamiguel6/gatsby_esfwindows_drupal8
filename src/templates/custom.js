@@ -25,17 +25,18 @@ query($slug: String!) {
 }`
 
 
-const Custom = () => {
-    
-    return (
-        <div>
-            <Layout>
+const Custom = ({ data }) => {
+  console.log(data, "from 'Custom template")
 
-                Custom template
-            </Layout>
+  return (
+    <div>
+      <Layout>
 
-        </div>
-    )
+
+      </Layout>
+
+    </div>
+  )
 }
 
 export default Custom

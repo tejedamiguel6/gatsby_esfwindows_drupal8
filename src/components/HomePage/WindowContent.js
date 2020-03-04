@@ -48,6 +48,8 @@ const WindowContent = () => {
   const title = data.nodePage.title
   const body = data.nodePage.body.value
 
+
+
   return (
     <>
       <Container>

@@ -1,8 +1,8 @@
-import React from "react"
-import { graphql, Link, useStaticQuery } from "gatsby"
-import Layout from "../components/HomePage/Layout"
-import styled from "styled-components"
-import Img from "gatsby-image"
+import React from 'react'
+import { graphql, Link, useStaticQuery } from 'gatsby'
+import Layout from '../components/HomePage/Layout'
+import styled from 'styled-components'
+import Img from 'gatsby-image'
 
 const Product = () => {
   const data = useStaticQuery(graphql`

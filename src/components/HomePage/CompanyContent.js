@@ -1,6 +1,6 @@
-import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
-import styled from "styled-components"
+import React from 'react'
+import { useStaticQuery, graphql, Link } from 'gatsby'
+import styled from 'styled-components'
 
 const CompanyContent = () => {
   // qurying with ID until i figure out how to make this dynamic
@@ -22,7 +22,6 @@ const CompanyContent = () => {
       }
     }
   `)
-  console.log("company", data)
   const title = data.nodePage.title
   const body = data.nodePage.body.value
   const button = data.nodePage.field_basic_page_link[0].title
@@ -48,6 +47,11 @@ const Btn = styled.button`
   border: none;
   padding: 17px 39px;
   font-weight: 700;
+
+  &:hover {
+    color: rgb(221, 130, 48);
+    cursor: pointer;
+  }
 `
 
 const CompanyInfo = styled.div`
