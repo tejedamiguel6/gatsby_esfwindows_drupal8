@@ -5,11 +5,11 @@ import { navigate } from 'gatsby'
 
 class Form extends React.Component {
   state = {
-    firstName: 'miguel',
-    lastName: 'tejeda',
-    email: 'tejedamiguel6@gmail.com',
+    firstName: '',
+    lastName: '',
+    email: '',
     subject: '',
-    message: 'lol',
+    message: '',
   }
 
   handleSubmit = event => {
