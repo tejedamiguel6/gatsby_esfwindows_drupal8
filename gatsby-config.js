@@ -6,15 +6,15 @@
 
 module.exports = {
   siteMetadata: {
-    title: "Esfwindows",
-    author: "Miguel",
+    title: 'Esfwindows',
+    author: 'Miguel',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
-      resolve: "gatsby-source-drupal",
+      resolve: 'gatsby-source-drupal',
       options: {
-        baseUrl: "http://localhost:8888/esfwindows_d8/",
+        baseUrl: 'https://dev-esfwindows.pantheonsite.io/',
       },
     },
     `gatsby-plugin-styled-components`,
@@ -22,20 +22,20 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: "src",
+        name: 'src',
         path: `${__dirname}/src/`,
       },
     },
-    "gatsby-image",
+    'gatsby-image',
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          "gatsby-remark-relative-images",
+          'gatsby-remark-relative-images',
           {
-            resolve: "gatsby-remark-images",
+            resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 750,
               linkImagesToOriginal: false,
