@@ -33,13 +33,11 @@ class Form extends React.Component {
           <FormContainer>
             <FormWrap>
               <h1>Contact Us</h1>
-              <form
-                method="POST"
-                data-netlify="true"
-                netlify
-                netlify-honeypot="bot-field"
-                hidden
-              >
+              <form  
+              name='contact'
+              method="POST" 
+              data-netlify="true"
+              data-netlify-honeypot='bot-field'></form>
                 <FormGroup>
                   <label htmlFor="firstName">
                     First Name:
