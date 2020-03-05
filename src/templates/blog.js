@@ -1,10 +1,9 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Layout from "../components/HomePage/Layout"
-import Img from "gatsby-image"
-import Head from "../components/HomePage/Head"
-import styled from "styled-components"
-
+import React from 'react'
+import { graphql } from 'gatsby'
+import Layout from '../components/HomePage/Layout'
+import Img from 'gatsby-image'
+import Head from '../components/HomePage/Head'
+import styled from 'styled-components'
 
 export const query = graphql`
   query($slug: String!) {
@@ -33,7 +32,6 @@ const Blog = ({ data }) => {
   const post = data.nodeBlog
   const image = data.nodeBlog.relationships.field_blog_image
 
-  console.log(image, 'blog tempalte')
   return (
     <Layout>
       <BlogLayout>
@@ -51,14 +49,12 @@ const Blog = ({ data }) => {
             <div dangerouslySetInnerHTML={{ __html: post.body.value }}></div>
           </div>
         ) : (
-            <p dangerouslySetInnerHTML={{ __html: post.body.value }}></p>
-          )}
+          <p dangerouslySetInnerHTML={{ __html: post.body.value }}></p>
+        )}
       </BlogLayout>
     </Layout>
   )
 }
-
-
 
 const BlogLayout = styled.div`
   max-width: 89 0px;

@@ -73,9 +73,7 @@ const Custom = () => {
         <FlexContainer>
           {data.allNodeCustom.edges.map(edge => {
             const customTitle = edge.node.title
-            const customImage =
-              edge.node.relationships.field_custom_image[0].localFile
-                .childImageSharp.fluid
+            const customImage = edge.node.relationships.field_custom_image[0].localFile.childImageSharp.fluid
             const customBody = edge.node.body.value
             console.log(edge, 'data')
             return (
@@ -83,18 +81,22 @@ const Custom = () => {
                 <ul>
                   <li>
                     <Link to={`/custom/${edge.node.fields.slug}`}>
-                      {!customBody || !customImage ? (
-                        <div>
-                          <h1>{customTitle}</h1>
-                          <p>There are images and bpdy</p>
-                          <SetImg fluid={customImage} />
-                        </div>
-                      ) : (
-                        <div>
-                          <h1>{customTitle}</h1>
-                          <SetImg fluid={customImage} />
-                        </div>
-                      )}
+                      <div>
+                        {
+                          !customBody || !customImage ? (
+                            <div>
+                              <h1>{customTitle}</h1>
+
+                              <SetImg fluid={customImage} />
+                            </div>
+                          ) : (
+                              <div>
+                                <h1>{customTitle}</h1>
+                                <SetImg fluid={customImage} />
+                              </div>
+                            )
+                        }
+                      </div>
                     </Link>
                   </li>
                 </ul>

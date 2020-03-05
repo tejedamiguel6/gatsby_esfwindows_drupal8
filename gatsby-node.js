@@ -42,7 +42,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const productsTemplate = path.resolve('./src/templates/products.js')
   // creating materials template
   const materialTemplate = path.resolve('./src/templates/materials.js')
-  // creating custom page tempalte
+  // creating custom page template
   const customTemplate = path.resolve('./src/templates/custom.js')
   // creating accessories template
   const accessoriesTemplate = path.resolve('./src/templates/accessories.js')
