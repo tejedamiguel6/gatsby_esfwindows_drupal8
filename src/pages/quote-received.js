@@ -8,7 +8,10 @@ const QuoteReceived = ({ location }) => {
     <Layout>
       <ThankYou>
         <h1>REQUEST RECEIVED SUCCESSFULLY</h1>
-        <h3>touch with you shortly</h3>
+        <h3>
+          Thank you {location.state.firstName} for contacting us! We will get in
+          touch with you shortly
+        </h3>
       </ThankYou>
       <QuoteReceivedd>
         <StyledLink to="/">Back to Home</StyledLink>
@@ -16,6 +19,7 @@ const QuoteReceived = ({ location }) => {
     </Layout>
   )
 }
+
 const ThankYou = styled.div`
   text-align: center;
   padding: 11.9rem 1rem 0;
