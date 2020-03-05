@@ -16,7 +16,7 @@ class Form extends React.Component {
     event.preventDefault()
     console.log(this.state)
     const { firstName } = this.state
-    navigate('/quote-received/', { state: { firstName } })
+    navigate('/quote-received', { state: { firstName } })
   }
 
   handleChange = event => {

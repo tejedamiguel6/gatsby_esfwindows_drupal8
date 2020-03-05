@@ -1,8 +1,8 @@
-import React from "react"
-import { graphql, Link, useStaticQuery } from "gatsby"
-import styled from "styled-components"
-import Layout from "../components/Layout"
-import Img from "gatsby-image"
+import React from 'react'
+import { graphql, Link, useStaticQuery } from 'gatsby'
+import styled from 'styled-components'
+import Layout from '../components/Layout'
+import Img from 'gatsby-image'
 
 const Accessories = () => {
   const data = useStaticQuery(graphql`
@@ -84,10 +84,6 @@ const Accessories = () => {
     </div>
   )
 }
-
-const Container = styled.div`
-  background: blue;
-`
 
 const About = styled.div`
   padding: 30px;
