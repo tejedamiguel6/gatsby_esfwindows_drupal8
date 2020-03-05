@@ -13,7 +13,6 @@ const QuoteReceived = ({ location }) => {
           touch with you shortly
         </h3>
       </ThankYou>
-
       <QuoteReceivedd>
         <StyledLink to="/">Back to Home</StyledLink>
       </QuoteReceivedd>
@@ -25,13 +24,11 @@ const ThankYou = styled.div`
   text-align: center;
   padding: 11.9rem 1rem 0;
 `
-
 const QuoteReceivedd = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 `
-
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: #2d385b;
