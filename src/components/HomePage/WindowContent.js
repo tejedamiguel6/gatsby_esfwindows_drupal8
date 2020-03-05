@@ -1,7 +1,7 @@
-import React from "react"
-import styled from "styled-components"
-import { useStaticQuery, Link, graphql } from "gatsby"
-import Img from "gatsby-image"
+import React from 'react'
+import styled from 'styled-components'
+import { useStaticQuery, Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 const WindowContent = () => {
   const data = useStaticQuery(graphql`
@@ -16,7 +16,7 @@ const WindowContent = () => {
           field_basic_page_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 900, maxHeight: 640) {
+                fluid(maxWidth: 900, maxHeight: 590) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -41,33 +41,44 @@ const WindowContent = () => {
           }
         }
       }
+      # this is query links you to the windows page
+      windowLink: nodeProducts(
+        id: { eq: "fd84c217-3940-52d0-940e-ccf456a4b887" }
+      ) {
+        id
+        title
+        fields {
+          slug
+        }
+      }
     }
   `)
 
-  const image = data.nodePage.relationships.field_basic_page_image[0].localFile.childImageSharp.fluid
+  const image =
+    data.nodePage.relationships.field_basic_page_image[0].localFile
+      .childImageSharp.fluid
   const title = data.nodePage.title
   const body = data.nodePage.body.value
-
-
-
   return (
     <>
       <Container>
-        <Img style={{ width: "50%" }} fluid={image} />
+        <Img style={{ width: '50%' }} fluid={image} />
         <Top>
           <h1>{title}</h1>
           <p dangerouslySetInnerHTML={{ __html: body }}></p>
           {/* <Bottom>
             <h1>About us</h1>
           </Bottom> */}
+
+          <Link to={`/products/${data.windowLink.fields.slug}`}>
+            <Btn>Learn More</Btn>
+          </Link>
         </Top>
       </Container>
 
-      <Link to={"/"}>
-        <Btn>Learn More</Btn>
-      </Link>
       <FlexContainer>
         {data.windowImages.relationships.field_basic_page_image.map(item => {
+          console.log(item, 'PPPp')
           const previewWindowImages = item.localFile.childImageSharp.fluid
           return <SetImg fluid={previewWindowImages} />
         })}

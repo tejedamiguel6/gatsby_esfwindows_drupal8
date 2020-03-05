@@ -15,7 +15,7 @@ query {
           field_slide_show_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 1270, maxHeight: 740) {
+                fluid(maxWidth: 1270, maxHeight: 620) {
                   ...GatsbyImageSharpFluid
                 }
               }
