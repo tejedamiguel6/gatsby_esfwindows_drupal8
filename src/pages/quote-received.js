@@ -19,7 +19,6 @@ const QuoteReceived = ({ location }) => {
     </Layout>
   )
 }
-
 const ThankYou = styled.div`
   text-align: center;
   padding: 11.9rem 1rem 0;

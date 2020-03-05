@@ -9,7 +9,6 @@ const Quote = () => {
     </QuoteContainer>
   )
 }
-
 const QuoteContainer = styled.div`
   background-color: #f5f5f5;
   margin-top: 0.5rem;
