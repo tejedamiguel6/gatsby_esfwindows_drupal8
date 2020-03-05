@@ -9,8 +9,8 @@ const QuoteReceived = ({ location }) => {
       <ThankYou>
         <h1>REQUEST RECEIVED SUCCESSFULLY</h1>
         <h3>
-          {/* Thank you {location.state.firstName} for contacting us! We will get in
-          touch with you shortly */}
+          Thank you {location.state.firstName} for contacting us! We will get in
+          touch with you shortly
         </h3>
       </ThankYou>
       <QuoteReceivedd>
