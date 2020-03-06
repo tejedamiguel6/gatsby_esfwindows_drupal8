@@ -30,32 +30,15 @@ const CompanyContent = () => {
     <CompanyInfo>
       <h1>{title}</h1>
       <h3 dangerouslySetInnerHTML={{ __html: body }}></h3>
-      <Link to={data.nodePage.fields.slug}>
-        <Btn>{button}</Btn>
-      </Link>
+      <ButtonCenteredFlex>
+        <StyledLink to={data.nodePage.fields.slug}>{button}</StyledLink>
+      </ButtonCenteredFlex>
     </CompanyInfo>
   )
 }
 
-const Btn = styled.button`
-  display: flex;
-  color: #2d395b;
-  margin: 0 auto;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: none;
-  padding: 17px 39px;
-  font-weight: 700;
-
-  &:hover {
-    color: rgb(221, 130, 48);
-    cursor: pointer;
-  }
-`
-
 const CompanyInfo = styled.div`
-  padding: 70px;
+  padding: 80px;
   h1 {
     text-align: center;
   }
@@ -64,6 +47,28 @@ const CompanyInfo = styled.div`
     font-size: 19px;
     color: #848484;
     box-sizing: border-box;
+  }
+`
+
+const ButtonCenteredFlex = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const StyledLink = styled(Link)`
+  margin-top: 50px;
+  text-decoration: none;
+  color: #2d385b;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ffff;
+
+  &:hover {
+    background-color: #274f8d;
+    color: white;
   }
 `
 export default CompanyContent

@@ -85,6 +85,7 @@ const HalfTwo = styled.div`
 `
 
 const Btn = styled.button`
+  border-radius: 10%;
   display: flex;
   color: #2d395b;
   margin: 0 auto;
