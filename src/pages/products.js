@@ -72,6 +72,8 @@ const Product = () => {
           const productImages =
             edge.node.relationships.field_products_images[0].localFile
               .childImageSharp.fluid
+
+          console.log('imAGES', productImages)
           return (
             <li>
               <Link to={`/products/${edge.node.fields.slug}`}>

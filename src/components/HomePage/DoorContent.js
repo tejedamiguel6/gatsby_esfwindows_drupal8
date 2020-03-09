@@ -16,7 +16,7 @@ const DoorContent = () => {
           field_basic_page_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 900, maxHeight: 640) {
+                fluid(maxWidth: 900, maxHeight: 520) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -46,18 +46,28 @@ const DoorContent = () => {
   return (
     <ContainerPadding>
       <Container>
-        <HalfTwo>
+        <Top>
           <h1>{title}</h1>
           <p dangerouslySetInnerHTML={{ __html: body }}></p>
-          <Link to={`products/${data.doorLink.fields.slug}`}>
-            <Btn>Learn More</Btn>
-          </Link>
-        </HalfTwo>
-        <Img style={{ width: '50%' }} fluid={image} />
+          <ButtonCenteredFlex>
+            <StyledLink to={`products/${data.doorLink.fields.slug}`}>
+              Learn More
+            </StyledLink>
+          </ButtonCenteredFlex>
+        </Top>
+        <SetImg fluid={image} alt={title} />
       </Container>
     </ContainerPadding>
   )
 }
+
+const SetImg = styled(Img)`
+  @media (min-width: 900px) {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 90%;
+  }
+`
 
 const ContainerPadding = styled.div`
   padding-top: 90px;
@@ -66,36 +76,54 @@ const ContainerPadding = styled.div`
 const Container = styled.div`
   background: #f5f5f5;
   display: flex;
-  justify-content: space-between;
+  border-top: 1px solid #274f8d;
+
+  @media (max-width: 899px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 `
 
-const HalfTwo = styled.div`
-  margin: 15px;
-  width: 50%;
+const Top = styled.div`
+  margin: 4rem 20px 0 20px;
+  width: 35%;
+  /* width: auto; */
+
+  @media (max-width: 899px) {
+    width: auto;
+  }
 
   h1 {
+    /* border: 1px solid red; */
     text-align: center;
-    margin-top: 39px;
+    margin-top: 30px;
   }
 
   p {
     text-align: center;
-    padding-top: 30px;
+    padding-top: 25px;
   }
 `
 
-const Btn = styled.button`
-  border-radius: 10%;
+const ButtonCenteredFlex = styled.div`
   display: flex;
-  color: #2d395b;
-  margin: 0 auto;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: none;
-  /* border: 1px solid red; */
-  padding: 17px 39px;
-  font-weight: 700;
+  justify-content: center;
+  align-items: center;
 `
 
+const StyledLink = styled(Link)`
+  margin-top: 50px;
+  text-decoration: none;
+  color: #2d385b;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ffff;
+
+  &:hover {
+    background-color: #274f8d;
+    color: white;
+  }
+`
 export default DoorContent

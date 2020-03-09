@@ -62,11 +62,10 @@ const WindowContent = () => {
   return (
     <>
       <Container>
-        <Img style={{ width: '65%' }} fluid={image} />
+        <SetImg fluid={image} alt={title} />
         <Top>
           <h1>{title}</h1>
           <p dangerouslySetInnerHTML={{ __html: body }}></p>
-
           <ButtonCenteredFlex>
             <StyledLink to={`/products/${data.windowLink.fields.slug}`}>
               Learn More
@@ -78,14 +77,33 @@ const WindowContent = () => {
   )
 }
 
+const SetImg = styled(Img)`
+  @media (min-width: 900px) {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 90%;
+  }
+`
+
 const Container = styled.div`
   background: #f5f5f5;
   display: flex;
+  border-top: 1px solid #274f8d;
+
+  @media (max-width: 899px) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 const Top = styled.div`
   margin: 4rem 20px 0 20px;
   width: 35%;
+  /* width: auto; */
+
+  @media (max-width: 899px) {
+    width: auto;
+  }
 
   h1 {
     /* border: 1px solid red; */
@@ -114,6 +132,10 @@ const StyledLink = styled(Link)`
   padding: 15px;
   border-radius: 10px;
   border: 1px solid #ffff;
+
+  @media (max-width: 899px) {
+    margin-bottom: 40px;
+  }
 
   &:hover {
     background-color: #274f8d;
