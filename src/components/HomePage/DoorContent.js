@@ -50,7 +50,10 @@ const DoorContent = () => {
           <h1>{title}</h1>
           <p dangerouslySetInnerHTML={{ __html: body }}></p>
           <ButtonCenteredFlex>
-            <StyledLink to={`products/${data.doorLink.fields.slug}`}>
+            <StyledLink
+              to={`products/${data.doorLink.fields.slug}`}
+              key={data.doorLink.id}
+            >
               Learn More
             </StyledLink>
           </ButtonCenteredFlex>
@@ -76,7 +79,6 @@ const ContainerPadding = styled.div`
 const Container = styled.div`
   background: #f5f5f5;
   display: flex;
-  border-top: 1px solid #274f8d;
 
   @media (max-width: 899px) {
     display: flex;
@@ -120,6 +122,15 @@ const StyledLink = styled(Link)`
   padding: 15px;
   border-radius: 10px;
   border: 1px solid #ffff;
+
+  &:hover {
+    background-color: #274f8d;
+    color: white;
+  }
+
+  @media (max-width: 899px) {
+    margin-bottom: 40px;
+  }
 
   &:hover {
     background-color: #274f8d;

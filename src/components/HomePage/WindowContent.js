@@ -24,23 +24,6 @@ const WindowContent = () => {
           }
         }
       }
-      # # windowImages: nodePage(
-      # #   id: { eq: "4df8f546-3489-5785-9761-d1d8fcbd3004" }
-      # # ) {
-      # #   id
-      # #   title
-      # #   relationships {
-      # #     field_basic_page_image {
-      # #       localFile {
-      # #         childImageSharp {
-      # #           fluid(maxWidth: 200) {
-      # #             ...GatsbyImageSharpFluid
-      # #           }
-      # #         }
-      # #       }
-      # #     }
-      # #   }
-      # }
       # this is query links you to the windows page
       windowLink: nodeProducts(
         id: { eq: "fd84c217-3940-52d0-940e-ccf456a4b887" }

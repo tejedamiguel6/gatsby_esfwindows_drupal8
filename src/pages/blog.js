@@ -1,8 +1,8 @@
-import React from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
-import Layout from "../components/HomePage/Layout"
-import styled from "styled-components"
-import Head from "../components/HomePage/Head"
+import React from 'react'
+import { Link, graphql, useStaticQuery } from 'gatsby'
+import Layout from '../components/HomePage/Layout'
+import styled from 'styled-components'
+import Head from '../components/HomePage/Head'
 
 const Blog = () => {
   const data = useStaticQuery(graphql`
@@ -20,6 +20,7 @@ const Blog = () => {
       }
     }
   `)
+
   return (
     <Layout>
       <Head title="Blog" />
