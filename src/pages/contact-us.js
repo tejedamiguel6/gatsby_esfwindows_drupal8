@@ -34,10 +34,11 @@ class Form extends React.Component {
             <FormWrap>
               <h1>Contact Us</h1>
               <form
+                action="POST"
+                data-netlify="true"
                 name="contact"
                 method="post"
                 netlify-honeypot="bot-field"
-                data-netlify="true"
               >
                 <input type="hidden" name="bot-field" />
                 <FormGroup>
