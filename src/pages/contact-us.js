@@ -35,10 +35,11 @@ class Form extends React.Component {
               <h1>Contact Us</h1>
               <form
                 name="contact"
-                method="POST"
+                method="post"
+                netlify-honeypot="bot-field"
                 data-netlify="true"
-                data-netlify-honeypot="bot-field"
               >
+                <input type="hidden" name="bot-field" />
                 <FormGroup>
                   <label htmlFor="firstName">
                     First Name:
@@ -53,7 +54,6 @@ class Form extends React.Component {
                     />
                   </label>
                 </FormGroup>
-
                 <FormGroup>
                   <label>
                     Last Name:
@@ -68,7 +68,6 @@ class Form extends React.Component {
                     />
                   </label>
                 </FormGroup>
-
                 <FormGroup>
                   <label>
                     Email Address

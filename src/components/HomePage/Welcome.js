@@ -1,7 +1,8 @@
-import React from "react"
-import { graphql, Link, useStaticQuery } from "gatsby"
-import styled from "styled-components"
-import SlideShow from "../Slideshow/SlideShow"
+import React from 'react'
+import { graphql, Link, useStaticQuery } from 'gatsby'
+import styled from 'styled-components'
+import SlideShow from '../Slideshow/SlideShow'
+import Img from 'gatsby-image'
 
 const Welcome = () => {
   const data = useStaticQuery(graphql`
@@ -28,6 +29,9 @@ const Welcome = () => {
 
   const title = data.nodePage.title
   const quote = data.nodePage.body.value
+  const image =
+    data.nodePage.relationships.field_basic_page_image[0].localFile
+      .childImageSharp.fluid
 
   return (
     <Hero>
@@ -53,7 +57,7 @@ const Title = styled.h1`
   padding-top: 66px;
   font-weight: 10;
   font-size: 70px;
-  font-family: "Times New Roman, Times, Serif";
+  font-family: 'Times New Roman, Times, Serif';
   @media (max-width: 500px) {
     font-size: 50px;
   }
