@@ -4,20 +4,20 @@ import Layout from '../components/Layout'
 import { navigate } from 'gatsby'
 
 class Form extends React.Component {
-  // state = {
-  //   firstName: '',
-  //   lastName: '',
-  //   email: '',
-  //   subject: '',
-  //   message: '',
-  // }
+  state = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    subject: '',
+    message: '',
+  }
 
-  // handleSubmit = event => {
-  //   event.preventDefault()
-  //   console.log(this.state)
-  //   const { firstName } = this.state
-  //   navigate('/quote-received', { state: { firstName } })
-  // }
+  handleSubmit = event => {
+    event.preventDefault()
+    console.log(this.state)
+    const { firstName } = this.state
+    navigate('/quote-received', { state: { firstName } })
+  }
 
   handleChange = event => {
     const { name, type, value } = event.target
@@ -35,11 +35,11 @@ class Form extends React.Component {
               <h1>Contact Us</h1>
               <form
                 data-netlify="true"
-                name="contactUS"
+                name="contactUs"
                 method="post"
                 netlify-honeypot="bot-field"
               >
-                <input type="hidden" name="bot-field" />
+                <input type="hidden" name="contact" value="contact" />
                 <FormGroup>
                   <label htmlFor="firstName">
                     First Name:
@@ -49,8 +49,8 @@ class Form extends React.Component {
                       id="firstName"
                       plaheholder="Your name"
                       autoComplete="off"
-                      // value={this.state.firstName}
-                      // onChange={this.handleChange}
+                      value={this.state.firstName}
+                      onChange={this.handleChange}
                     />
                   </label>
                 </FormGroup>
@@ -63,8 +63,8 @@ class Form extends React.Component {
                       id="lastName"
                       plaheholder="Smith"
                       autoComplete="off"
-                      // value={this.state.lastName}
-                      // onChange={this.handleChange}
+                      value={this.state.lastName}
+                      onChange={this.handleChange}
                     />
                   </label>
                 </FormGroup>
@@ -76,9 +76,9 @@ class Form extends React.Component {
                       type="email"
                       id="email"
                       plaheholder="Your name"
-                      // autoComplete="off"
-                      // value={this.state.email}
-                      // onChange={this.handleChange}
+                      autoComplete="off"
+                      value={this.state.email}
+                      onChange={this.handleChange}
                     />
                   </label>
                 </FormGroup>
@@ -86,8 +86,8 @@ class Form extends React.Component {
                   <select
                     name="subject"
                     type="select"
-                    // value={this.subject}
-                    // onChange={this.handleChange}
+                    value={this.subject}
+                    onChange={this.handleChange}
                   >
                     Subject:
                     <option value="requestInfo">
@@ -106,8 +106,8 @@ class Form extends React.Component {
                     rows={5}
                     id="message"
                     name="message"
-                    // value={this.state.message}
-                    // onChange={this.handleChange}
+                    value={this.state.message}
+                    onChange={this.handleChange}
                   />
                 </FormGroup>
               </form>
@@ -115,7 +115,7 @@ class Form extends React.Component {
                 <button
                   onClick={this.handleSubmit}
                   type="submit"
-                  // disabled={!this.state.email}
+                  disabled={!this.state.email}
                 >
                   Submit
                 </button>
