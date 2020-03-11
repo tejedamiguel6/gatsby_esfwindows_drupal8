@@ -36,7 +36,7 @@ class Form extends React.Component {
               <form
                 action="POST"
                 data-netlify="true"
-                name="contact"
+                name="contactUS"
                 method="post"
                 netlify-honeypot="bot-field"
               >
