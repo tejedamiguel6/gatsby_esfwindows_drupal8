@@ -42,7 +42,7 @@ const Product = () => {
           field_basic_page_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 1575, maxHeight: 900) {
+                fluid(maxWidth: 1080, maxHeight: 450) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -58,7 +58,7 @@ const Product = () => {
 
   return (
     <Layout>
-      <Img fluid={productBasicImage} />
+      <HeroImg fluid={productBasicImage} />
 
       <About>
         <h1>{data.productBasicPage.title}</h1>
@@ -89,6 +89,10 @@ const Product = () => {
 }
 
 // styled components
+
+const HeroImg = styled(Img)`
+  margin-top: 4rem;
+`
 
 const About = styled.div`
   padding: 30px;

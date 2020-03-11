@@ -126,9 +126,6 @@ const StyledLink = styled(Link)`
   }
 `
 
-// const FlexContainer = styled.div`
-//   display: flex;
-// `
 // const SetImg = styled(Img)`
 //   display: block !important;
 //   margin: 0 auto;

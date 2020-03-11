@@ -13,7 +13,7 @@ const BlogPreview = () => {
           field_basic_page_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 600, maxHeight: 370) {
+                fluid(maxWidth: 600, maxHeight: 380) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -23,7 +23,6 @@ const BlogPreview = () => {
       }
     }
   `)
-  console.log(data)
 
   const blogImage =
     data.nodePage.relationships.field_basic_page_image[0].localFile
@@ -34,12 +33,15 @@ const BlogPreview = () => {
   return (
     <Container>
       <BlogContainer>
-        <Img style={{ width: '100%' }} fluid={blogImage} />
-        <h3>
+        <Img
+          fluid={blogImage}
+          title={data.nodePage.title}
+          alt={data.nodePage.title}
+        />
+        <ButtonCenteredFlex>
           <StyledLink to={`/blog`}>{data.nodePage.title}</StyledLink>
-        </h3>
+        </ButtonCenteredFlex>
       </BlogContainer>
-
       <RightSide>
         <h3>text should be in the middle</h3>
       </RightSide>
@@ -49,9 +51,12 @@ const BlogPreview = () => {
 
 const Container = styled.div`
   display: flex;
-  /* border: 2px solid red; */
   margin-top: 6rem;
   max-width: 1679px;
+`
+
+const BlogContainer = styled.div`
+  width: 50%;
 `
 
 const StyledLink = styled(Link)`
@@ -63,37 +68,25 @@ const StyledLink = styled(Link)`
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #ffff;
-
-  @media (max-width: 899px) {
-    margin-bottom: 40px;
-  }
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:hover {
     background-color: transparent;
-    color: white;
+    color: grey;
   }
 `
 
-const BlogContainer = styled.div`
+const ButtonCenteredFlex = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
-  flex-direction: column;
-  border: 2px solid blue;
-  width: 50%;
-
-  h3 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
-    bottom: 110px;
-  }
+  align-items: center;
+  position: relative;
+  top: -80px;
 `
 
 const RightSide = styled.div`
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 55%;
   display: flex;
   align-items: center;
