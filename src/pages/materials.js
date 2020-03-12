@@ -1,9 +1,9 @@
-import React from "react"
-import Layout from "../components/Layout"
-import Img from "gatsby-image"
-import styled from "styled-components"
+import React from 'react'
+import Layout from '../components/Layout'
+import Img from 'gatsby-image'
+import styled from 'styled-components'
 
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { Link, useStaticQuery, graphql } from 'gatsby'
 
 const Materials = () => {
   const data = useStaticQuery(graphql`
@@ -82,7 +82,7 @@ const Materials = () => {
                     </div>
                   ) : (
                     <div>
-                      <p>Image not available</p>{" "}
+                      <p>Image not available</p>{' '}
                     </div>
                   )}
                 </Link>
@@ -96,12 +96,20 @@ const Materials = () => {
 }
 
 // styled Components
-const About = styled.div`
-  padding: 30px;
-  margin: 20px auto;
 
+const About = styled.div`
+  margin: 0 auto;
+  width: 95%;
+  padding: 20px;
   h1 {
+    padding-top: 1.4rem;
+
     text-align: center;
+  }
+  p {
+    line-height: 1.6;
+    text-align: center;
+    color: #848484;
   }
 `
 
@@ -114,7 +122,8 @@ const FlexContainer = styled.ul`
   margin: 60px auto;
 
   h1 {
-    font-size: 18px;
+    color: #2d385b;
+    font-size: 1.2rem;
   }
 
   li {

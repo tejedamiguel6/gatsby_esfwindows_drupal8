@@ -38,11 +38,16 @@ const CompanyContent = () => {
 }
 
 const CompanyInfo = styled.div`
-  padding: 80px;
+  margin: 0 auto;
+  width: 80%;
+
+  padding: 20px;
   h1 {
+    padding-top: 1.4rem;
     text-align: center;
   }
   h3 {
+    line-height: 1.9;
     text-align: center;
     font-size: 19px;
     color: #848484;

@@ -44,7 +44,7 @@ const Custom = () => {
           field_basic_page_image {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 990, maxHeight: 400) {
+                fluid(maxWidth: 870, maxHeight: 400) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -64,16 +64,17 @@ const Custom = () => {
     <div>
       <Layout>
         <Img fluid={basicPageImage} />
-        <h1>{title}</h1>
-
-        <div>
+        <About>
+          <h1>{title}</h1>
           <p dangerouslySetInnerHTML={{ __html: body }}></p>
-        </div>
+        </About>
 
         <FlexContainer>
           {data.allNodeCustom.edges.map(edge => {
             const customTitle = edge.node.title
-            const customImage = edge.node.relationships.field_custom_image[0].localFile.childImageSharp.fluid
+            const customImage =
+              edge.node.relationships.field_custom_image[0].localFile
+                .childImageSharp.fluid
             const customBody = edge.node.body.value
             console.log(edge, 'data')
             return (
@@ -82,20 +83,18 @@ const Custom = () => {
                   <li>
                     <Link to={`/custom/${edge.node.fields.slug}`}>
                       <div>
-                        {
-                          !customBody || !customImage ? (
-                            <div>
-                              <h1>{customTitle}</h1>
+                        {!customBody || !customImage ? (
+                          <div>
+                            <h1>{customTitle}</h1>
 
-                              <SetImg fluid={customImage} />
-                            </div>
-                          ) : (
-                              <div>
-                                <h1>{customTitle}</h1>
-                                <SetImg fluid={customImage} />
-                              </div>
-                            )
-                        }
+                            <SetImg fluid={customImage} />
+                          </div>
+                        ) : (
+                          <div>
+                            <h1>{customTitle}</h1>
+                            <SetImg fluid={customImage} />
+                          </div>
+                        )}
                       </div>
                     </Link>
                   </li>
@@ -108,6 +107,22 @@ const Custom = () => {
     </div>
   )
 }
+
+const About = styled.div`
+  margin: 0 auto;
+  width: 95%;
+  padding: 20px;
+  h1 {
+    padding-top: 1.4rem;
+
+    text-align: center;
+  }
+  p {
+    line-height: 1.6;
+    text-align: center;
+    color: #848484;
+  }
+`
 
 const FlexContainer = styled.ul`
   padding: 0.6rem;

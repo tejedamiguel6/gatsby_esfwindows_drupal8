@@ -86,13 +86,21 @@ const Accessories = () => {
 }
 
 const About = styled.div`
-  padding: 30px;
-  margin: 20px auto;
-
+  margin: 0 auto;
+  width: 95%;
+  padding: 20px;
   h1 {
+    padding-top: 1.4rem;
+
     text-align: center;
   }
+  p {
+    line-height: 1.6;
+    text-align: center;
+    color: #848484;
+  }
 `
+
 const FlexContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -101,6 +109,7 @@ const FlexContainer = styled.ul`
 
   h2 {
     text-align: center;
+    color: #2d385b;
   }
 
   li {
