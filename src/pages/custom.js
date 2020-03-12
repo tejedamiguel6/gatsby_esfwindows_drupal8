@@ -61,7 +61,7 @@ const Custom = () => {
   const body = data.customBasicPage.body.value
 
   return (
-    <div>
+    <>
       <Layout>
         <Img fluid={basicPageImage} />
         <About>
@@ -76,17 +76,15 @@ const Custom = () => {
               edge.node.relationships.field_custom_image[0].localFile
                 .childImageSharp.fluid
             const customBody = edge.node.body.value
-            console.log(edge, 'data')
             return (
-              <div>
+              <>
                 <ul>
                   <li>
                     <Link to={`/custom/${edge.node.fields.slug}`}>
-                      <div>
+                      <>
                         {!customBody || !customImage ? (
                           <div>
                             <h1>{customTitle}</h1>
-
                             <SetImg fluid={customImage} />
                           </div>
                         ) : (
@@ -95,16 +93,16 @@ const Custom = () => {
                             <SetImg fluid={customImage} />
                           </div>
                         )}
-                      </div>
+                      </>
                     </Link>
                   </li>
                 </ul>
-              </div>
+              </>
             )
           })}
         </FlexContainer>
       </Layout>
-    </div>
+    </>
   )
 }
 

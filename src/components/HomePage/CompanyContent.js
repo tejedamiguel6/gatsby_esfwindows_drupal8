@@ -40,7 +40,6 @@ const CompanyContent = () => {
 const CompanyInfo = styled.div`
   margin: 0 auto;
   width: 80%;
-
   padding: 20px;
   h1 {
     padding-top: 1.4rem;

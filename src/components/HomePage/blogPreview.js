@@ -75,6 +75,16 @@ const StyledLink = styled(Link)`
     background-color: transparent;
     color: grey;
   }
+
+  @media (max-width: 900px) {
+    margin-top: 10px;
+    border-bottom: 2px solid #2d385b;
+    position: relative;
+    top: 80px;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 0px;
+  }
 `
 
 const ButtonCenteredFlex = styled.div`
