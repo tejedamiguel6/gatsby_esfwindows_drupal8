@@ -4,12 +4,15 @@ import Layout from '../components/HomePage/Layout'
 import styled from 'styled-components'
 import Head from '../components/HomePage/Head'
 
+import SelectBlogMonth from '../components/BlogPage/SelectBlogMonth'
+
 const Blog = () => {
   const data = useStaticQuery(graphql`
     query {
       allNodeBlog {
         edges {
           node {
+            created(formatString: "MMMM")
             id
             title
             fields {
@@ -21,18 +24,24 @@ const Blog = () => {
     }
   `)
 
+  console.log(data.allNodeBlog, 'dates here')
   return (
     <Layout>
+      <SelectBlogMonth />
       <Head title="Blog" />
       <BlogPost>
-        {data.allNodeBlog.edges.map(edge => (
-          <li>
-            <Link to={`/blog/${edge.node.fields.slug}`}>
-              <h2>{edge.node.title}</h2>
-              <p>{edge.node.date}</p>
-            </Link>
-          </li>
-        ))}
+        {data.allNodeBlog.edges.map(edge => {
+          const date = edge.node.created
+          console.log(date)
+          return (
+            <li>
+              <Link to={`/blog/${edge.node.fields.slug}`}>
+                <h2>{edge.node.title}</h2>
+                <p>{edge.node.date}</p>
+              </Link>
+            </li>
+          )
+        })}
       </BlogPost>
     </Layout>
   )
