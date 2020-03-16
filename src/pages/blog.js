@@ -11,7 +11,7 @@ const Blog = () => {
       allNodeBlog {
         edges {
           node {
-            created(formatString: "MMMM")
+            created(formatString: "MMMM, Do, YYYY")
             id
             relationships {
               field_blog_image {
@@ -38,6 +38,7 @@ const Blog = () => {
   return (
     <Layout>
       <Head title="Blog" />
+      sp
       <BlogPost>
         {data.allNodeBlog.edges.map(edge => {
           const date = edge.node.created
@@ -52,6 +53,7 @@ const Blog = () => {
                 <Img fixed={blogImage} />
                 <h2>{edge.node.title}</h2>
                 <p>{edge.node.date}</p>
+                <p>{date}</p>
               </Link>
             </li>
           )
@@ -82,12 +84,20 @@ const BlogPost = styled.ol`
     background: #e4e4e4;
   }
 
+  @media (max-width: 900px) {
+    display: flex;
+    width: 100%;
+    margin: 10px auto;
+    border: 1px solid red;
+  }
+
   h2 {
+    font-size: 19px;
     line-height: 1rem;
     letter-spacing: 4px;
-    text-align: center;
+    text-align: left;
     /* border: 1px solid red; */
-    padding: 1rem 0 1rem 0;
+    padding: 1rem 0 1rem 0.5rem;
   }
 
   p {
