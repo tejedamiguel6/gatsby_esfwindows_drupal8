@@ -2,7 +2,7 @@ const path = require('path')
 
 // template slug
 module.exports.onCreateNode = ({ node, actions }) => {
-  console.log(JSON.stringify(node, undefined, 3))
+  // console.log(JSON.stringify(node, undefined, 3))
 
   const { createNodeField } = actions
   if (node.internal.owner === 'gatsby-source-drupal') {

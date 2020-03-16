@@ -5,8 +5,6 @@ import styled from 'styled-components'
 import Head from '../components/HomePage/Head'
 import Img from 'gatsby-image'
 
-import SelectBlogMonth from '../components/BlogPage/SelectBlogMonth'
-
 const Blog = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -39,7 +37,6 @@ const Blog = () => {
   console.log(data.allNodeBlog, 'dates here')
   return (
     <Layout>
-      <SelectBlogMonth />
       <Head title="Blog" />
       <BlogPost>
         {data.allNodeBlog.edges.map(edge => {
