@@ -3,6 +3,7 @@ import { Link, graphql, useStaticQuery } from 'gatsby'
 import Layout from '../components/HomePage/Layout'
 import styled from 'styled-components'
 import Head from '../components/HomePage/Head'
+import Img from 'gatsby-image'
 
 import SelectBlogMonth from '../components/BlogPage/SelectBlogMonth'
 
@@ -14,6 +15,17 @@ const Blog = () => {
           node {
             created(formatString: "MMMM")
             id
+            relationships {
+              field_blog_image {
+                localFile {
+                  childImageSharp {
+                    fixed(width: 530, height: 230) {
+                      ...GatsbyImageSharpFixed
+                    }
+                  }
+                }
+              }
+            }
             title
             fields {
               slug
@@ -32,10 +44,15 @@ const Blog = () => {
       <BlogPost>
         {data.allNodeBlog.edges.map(edge => {
           const date = edge.node.created
-          console.log(date)
+          console.log(edge, 'BLOG PAGE DATA')
+          const blogImage =
+            edge.node.relationships.field_blog_image[0].localFile
+              .childImageSharp.fixed
+
           return (
             <li>
               <Link to={`/blog/${edge.node.fields.slug}`}>
+                <Img fixed={blogImage} />
                 <h2>{edge.node.title}</h2>
                 <p>{edge.node.date}</p>
               </Link>
@@ -48,17 +65,19 @@ const Blog = () => {
 }
 
 const BlogPost = styled.ol`
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: wrap;
   list-style-type: none;
   padding-top: 130px;
   margin: 0;
   li {
     margin: 1rem 0;
-    border: 1px solid red;
   }
   a {
-    background: #f4f4f4;
+    /* border: 6px solid #f4f4f4; */
+    /* background: #f4f4f4; */
     color: #000000;
-    padding: 1rem;
     display: block;
     text-decoration: none;
   }
@@ -67,7 +86,11 @@ const BlogPost = styled.ol`
   }
 
   h2 {
-    margin-bottom: 0;
+    line-height: 1rem;
+    letter-spacing: 4px;
+    text-align: center;
+    /* border: 1px solid red; */
+    padding: 1rem 0 1rem 0;
   }
 
   p {

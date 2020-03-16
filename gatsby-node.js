@@ -2,6 +2,8 @@ const path = require('path')
 
 // template slug
 module.exports.onCreateNode = ({ node, actions }) => {
+  console.log(JSON.stringify(node, undefined, 3))
+
   const { createNodeField } = actions
   if (node.internal.owner === 'gatsby-source-drupal') {
     // console.log(JSON.stringify(node, undefined, 3))
@@ -56,6 +58,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
           node {
             id
             title
+            field_year
+            field_month
             fields {
               slug
             }
