@@ -34,23 +34,20 @@ const Blog = () => {
     }
   `)
 
-  console.log(data.allNodeBlog, 'dates here')
   return (
     <Layout>
       <Head title="Blog" />
-      sp
       <BlogPost>
         {data.allNodeBlog.edges.map(edge => {
           const date = edge.node.created
-          console.log(edge, 'BLOG PAGE DATA')
+          const title = edge.node.title
           const blogImage =
             edge.node.relationships.field_blog_image[0].localFile
               .childImageSharp.fixed
-
           return (
-            <li>
+            <li key={edge.node.id}>
               <Link to={`/blog/${edge.node.fields.slug}`}>
-                <Img fixed={blogImage} />
+                <Img fixed={blogImage} alt={title} title={title} />
                 <h2>{edge.node.title}</h2>
                 <p>{edge.node.date}</p>
                 <p>{date}</p>
@@ -86,12 +83,12 @@ const BlogPost = styled.ol`
 
   @media (max-width: 900px) {
     display: flex;
-    width: 100%;
     margin: 10px auto;
-    border: 1px solid red;
+    /* border: 1px solid red; */
   }
 
   h2 {
+    font-family: 'lora';
     font-size: 19px;
     line-height: 1rem;
     letter-spacing: 4px;
@@ -104,7 +101,10 @@ const BlogPost = styled.ol`
     color: #777777;
     font-size: 0.8rem;
     font-style: italic;
+    font-family: 'lora, sans-serif'
   }
 `
+
+
 
 export default Blog

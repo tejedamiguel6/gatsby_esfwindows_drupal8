@@ -18,6 +18,7 @@
     "gatsby": "^2.19.27",
     "gatsby-image": "^2.2.38",
     "gatsby-plugin-layout": "^1.1.21",
+    "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
     "gatsby-plugin-react-helmet": "^3.1.20",
     "gatsby-plugin-sass": "^2.1.24",
     "gatsby-plugin-sharp": "^2.4.5",

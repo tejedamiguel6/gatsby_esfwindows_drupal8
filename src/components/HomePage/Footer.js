@@ -29,6 +29,7 @@ const Footer = () => {
 }
 
 const Container = styled.footer`
+
   background-color: #282828;
   /* margin-top: 1rem; */
   padding-bottom: 10px;
@@ -36,6 +37,7 @@ const Container = styled.footer`
 
   p,
   h3 {
+    font-family: 'Lora';
     color: white;
     padding: 1rem;
   }

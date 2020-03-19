@@ -28,15 +28,13 @@ export const query = graphql`
   }
 `
 
+
 const Blog = ({ data }) => {
   const post = data.nodeBlog
   const noImage = data.nodeBlog.relationships.field_blog_image
-  console.log(noImage, 'WHAT IS THIs')
   const image = data.nodeBlog.relationships.field_blog_image
 
-  console.log(image)
 
-  console.log(noImage)
   console.log('this is where the blog tempalte ', data)
   return (
     <Layout>
@@ -47,16 +45,14 @@ const Blog = ({ data }) => {
         {!image ? (
           <div>
             <div dangerouslySetInnerHTML={{ __html: post.body.value }}></div>
-            {console.log(image)}
             <h1>No image</h1>
           </div>
         ) : (
-          <div>
-            <p dangerouslySetInnerHTML={{ __html: post.body.value }}></p>
-            {console.log(noImage, '!!!!')}
-            {/* <Img fluid={image.localFile.childImageSharp.fluid} /> */}
-          </div>
-        )}
+            <div>
+              <p dangerouslySetInnerHTML={{ __html: post.body.value }}></p>
+              {/* <Img fluid={image.localFile.childImageSharp.fluid} /> */}
+            </div>
+          )}
       </BlogLayout>
     </Layout>
   )

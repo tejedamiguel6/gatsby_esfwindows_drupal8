@@ -24,9 +24,8 @@ const BlogPreview = () => {
     }
   `)
 
-  const blogImage =
-    data.nodePage.relationships.field_basic_page_image[0].localFile
-      .childImageSharp.fluid
+  const blogImage = data.nodePage.relationships.field_basic_page_image[0].localFile
+    .childImageSharp.fluid
 
   console.log(blogImage)
 
@@ -43,7 +42,7 @@ const BlogPreview = () => {
         </ButtonCenteredFlex>
       </BlogContainer>
       <RightSide>
-        <h3>text should be in the middle</h3>
+        {/* <h3>filler text/image for later</h3> */}
       </RightSide>
     </Container>
   )

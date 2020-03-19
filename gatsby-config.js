@@ -9,7 +9,23 @@ module.exports = {
     title: 'Esfwindows',
     author: 'Miguel',
   },
+
   plugins: [
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Lora`,
+            subsets: [`latin`],
+          },
+          {
+            family: `Open Sans`,
+            variants: [`400`, `700`],
+          },
+        ],
+      }
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: 'gatsby-source-drupal',
@@ -26,6 +42,7 @@ module.exports = {
         path: `${__dirname}/src/`,
       },
     },
+
     'gatsby-image',
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,

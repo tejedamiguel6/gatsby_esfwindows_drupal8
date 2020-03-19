@@ -27,6 +27,10 @@ const Wrapper = styled.div`
     height: 0.4rem;
     margin-bottom: 0.7rem;
     transition: all ease-in-out 0.2s;
+
+    @media(max-width: 414px ) {
+      margin-bottom: 0.8rem;
+    }
   }
 
   .open span:nth-child(2) {
