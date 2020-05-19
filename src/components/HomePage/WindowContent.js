@@ -120,6 +120,10 @@ const StyledLink = styled(Link)`
     margin-bottom: 40px;
   }
 
+  @media(max-width: 1300px ) {
+    margin-bottom: 2rem;
+  }
+
   &:hover {
     background-color: #274f8d;
     color: white;

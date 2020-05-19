@@ -24,7 +24,7 @@ module.exports = {
             variants: [`400`, `700`],
           },
         ],
-      }
+      },
     },
     `gatsby-plugin-react-helmet`,
     {
