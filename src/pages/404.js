@@ -1,8 +1,8 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react'
+import { Link } from 'gatsby'
 
-import Layout from "../components/HomePage/Layout"
-import Head from "../components/HomePage/Head"
+import Layout from '../components/HomePage/Layout'
+import Head from '../components/HomePage/Head'
 
 const NotFound = () => {
   return (
