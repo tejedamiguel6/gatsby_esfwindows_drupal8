@@ -1,15 +1,11 @@
 import React from 'react'
-import {
-  graphql,
-  Link,
-  useStaticQuery
-} from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
 import SlideShow from '../Slideshow/SlideShow'
 import Img from 'gatsby-image'
 
 const Welcome = () => {
-  const data = useStaticQuery(graphql `
+  const data = useStaticQuery(graphql`
     query {
       nodePage(id: { eq: "096c6f24-2c9d-5534-b8f9-0ed68a782b9e" }) {
         title
@@ -35,35 +31,29 @@ const Welcome = () => {
   const quote = data.nodePage.body.value
   const image =
     data.nodePage.relationships.field_basic_page_image[0].localFile
-    .childImageSharp.fluid
+      .childImageSharp.fluid
 
-  return ( <
-    Hero >
-    <
-    SlideShow / >
-    <
-    Title > {
-      title
-    } < /Title>{' '} <
-    Quote dangerouslySetInnerHTML = {
-      {
-        __html: quote,
-      }
-    } >
-    {
-      ' '
-    } <
-    /Quote>{' '} <
-    /Hero>
+  return (
+    <Hero>
+      <SlideShow />
+      <Title> {title} </Title>{' '}
+      <Quote
+        dangerouslySetInnerHTML={{
+          __html: quote,
+        }}
+      >
+        {' '}
+      </Quote>{' '}
+    </Hero>
   )
 }
 
-const Hero = styled.div `
+const Hero = styled.div`
   /* border: 1px solid red; */
   padding: 4.5rem 0 0 0;
   position: relative;
 `
-const Title = styled.h1 `
+const Title = styled.h1`
   position: absolute;
   color: #ffffff;
   margin: auto;
@@ -79,7 +69,7 @@ const Title = styled.h1 `
   }
 `
 
-const Quote = styled.h3 `
+const Quote = styled.h3`
   position: absolute;
   top: 45%;
   left: 20%;
