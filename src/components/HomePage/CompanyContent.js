@@ -36,6 +36,7 @@ const CompanyContent = () => {
       >
         {' '}
         get pusbh // debuggin git not working // what is happening lkasfhldjsah
+        // how to github
       </h3>{' '}
       <ButtonCenteredFlex>
         <StyledLink to={data.nodePage.fields.slug}> {button} </StyledLink>{' '}
