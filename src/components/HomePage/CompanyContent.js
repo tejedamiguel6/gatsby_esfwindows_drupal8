@@ -28,12 +28,18 @@ const CompanyContent = () => {
 
   return (
     <CompanyInfo>
-      <h1>{title}</h1>
-      <h3 dangerouslySetInnerHTML={{ __html: body }}></h3>
+      <h1> {title} </h1>{' '}
+      <h3
+        dangerouslySetInnerHTML={{
+          __html: body,
+        }}
+      >
+        {' '}
+        // get pusbh
+      </h3>{' '}
       <ButtonCenteredFlex>
-
-        <StyledLink to={data.nodePage.fields.slug}>{button}</StyledLink>
-      </ButtonCenteredFlex>
+        <StyledLink to={data.nodePage.fields.slug}> {button} </StyledLink>{' '}
+      </ButtonCenteredFlex>{' '}
     </CompanyInfo>
   )
 }

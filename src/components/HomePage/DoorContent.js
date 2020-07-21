@@ -37,6 +37,7 @@ const DoorContent = () => {
     }
   `)
   const { title } = data.nodePage
+
   const body = data.nodePage.body.value
 
   const image =
